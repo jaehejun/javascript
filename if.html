@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0404 js + html</title>
+    <style>
+        .blue {color: #00f;}
+        .red {color: #f00;}
+    </style>
+</head>
+<body>
+    <!-- <script>
+        let walkAmout = prompt('당신이 하루에 걷는 양은 몇 보인가요?');
+        if(walkAmout >= 10000){
+            document.write("매우 좋은 습관을 갖고 있군요~", "<br/>");
+        }
+        document.write("========== The End ==========");
+    </script> -->
+
+    <!-- <script>
+        const date = new Date();
+        const hour = date.getHours();
+        if (hour < 12) {
+            alert('오전입니다.');
+        }
+        if (hour >= 12) {
+            alert('오후입니다.');
+        }
+        const minute = date.getMinutes();
+        if (minute >= 40 && minute < 50) {
+            alert('쉬는시간입니다.');
+        } else {
+            alert('수업시간입니다.')
+        }
+    </script> -->
+
+    <!-- <script>
+        let month = prompt("지금은 몇 월입니까?", "숫자(1-12)를 입력하세요");
+        if (month >= 9 && month <= 11) {
+            document.write("가을이네요~~");
+        } else if (month >= 6 && month <= 8) {
+            document.write("캠핑 가기 좋은 여름이네요~~");
+        } else if (month >= 3 && month <= 5) {
+            document.write("나른한 봄날이네요~~");
+        } else {
+            document.write("이불 밖은 위험한 겨울이네요~~");
+        }
+    </script> -->
+
+    <!-- <script>
+        const input = Number(prompt('숫자를 입력하세요', '숫자'));
+        switch (input % 2) {
+            case 0:
+                alert('짝수입니다.');
+                break;
+            case 1:
+                alert('홀수입니다.');
+                break;
+            default:
+                alert('숫자가 아닙니다.');
+                break;
+        }
+    </script> -->
+
+    <!-- <script>
+        for (let index = 0; index < 10; index++) {
+            document.write("반복 " + index, "<br>");
+        }
+    </script> -->
+
+    <!-- <script>
+        let i = 0;
+        while (confirm('계속 진행하시겠습니까?')) {
+            alert(`${i}번째 반복입니다.`);
+            i = i + 1;
+        }
+    </script> -->
+
+    <!-- <script>
+        let i = 20;
+        while (i >= 10) {
+            if (i % 2 == 0) {
+                document.write("<p class='blue'>" + i + "</p>");
+            }
+            else {
+                document.write("<p class='red'>" + i + "</p>");
+            }
+            i--;
+        }
+    </script> -->
+
+    <!-- <script>
+        for (let i = 0; true; i++) {
+            alert(i + '번째 반복문입니다.');
+            const isContinue = confirm('계속 하시겠습니까?');
+            if (!isContinue) {
+                break;
+            }
+        }
+        alert('프로그램 종료');
+    </script> -->
+
+    <!-- <script>
+        let sum = 0;
+        for (let i = 1; i <= 10; i++) {
+            if (i % 2 === 1) {
+                alert(i + "는 더하지 않음");
+                continue;
+            }
+            alert(i + "는 더함");
+            sum += i;
+        }
+        alert(sum);
+    </script> -->
+
+    <script>
+        document.write("<table border='1'>");
+            document.write("<tr><th></th><th>1열</th><th>2열</th></tr>");
+        for (let i = 1; i <= 3; i++) {
+            document.write(`<tr><td>${i}행</td>`);
+            for (let j = 1; j <= 2; j++) {
+                document.write(`<td>${i}행${j}열</td>`);
+            }
+            document.write("</tr>");
+        }
+        document.write("</table");
+    </script>
+</body>
+</html>
