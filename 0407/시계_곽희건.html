@@ -1,0 +1,45 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="clock"></h1>
+    <script>
+        setInterval(() => {
+            const date = new Date();
+            const text = `${date.getMonth()}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
+            document.getElementById("clock").textContext = text;
+        }, 1000);
+    </script>
+</body>
+</html> -->
+
+<!-- 곽희건 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let time = "";
+      let date = "";
+      setInterval(() => {
+        time = new Date().toLocaleTimeString();
+        date = new Date().toLocaleDateString();
+        dateList = date.split(".");
+        timeList = time.split(" ")[1].split(":");
+        document.getElementById(
+          "time"
+        ).innerText = `${dateList[1]}월 ${dateList[2]}일 ${timeList[0]}시 ${timeList[1]}분 ${timeList[2]}초`;
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <p id="time"></p>
+  </body>
+</html>
+

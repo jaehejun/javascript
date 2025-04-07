@@ -31,10 +31,10 @@ function addPoints(a, b)
     let maxLen;
     let sum;
 
-    console.log(aStr.split('.'));
-    console.log(typeof(aStr.split('.')));
-    console.log(bStr.split('.'));
-    console.log(typeof(bStr.split('.')));
+    // console.log(aStr.split('.'));
+    // console.log(typeof(aStr.split('.')));
+    // console.log(bStr.split('.'));
+    // console.log(typeof(bStr.split('.')));
 
     if (aStr.includes('.'))
         aLen = aStr.split('.')[1].length;

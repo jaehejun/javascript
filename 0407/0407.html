@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .title {
+            display: flex;
+            justify-content: center;
+        }
+    
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        .card {
+            background-color: #002060;
+            padding: 10px;
+            width: 150px;
+            color: #fff;
+            border: 2px solid #a9a9a9;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 5%;
+        }
+    
+        .card h2 {
+            font-weight: bold;
+            font-size: 20px;
+        }
+    
+        .card p {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <script>
+        function add(x,y) {
+            return x + y;
+        }
+        document.write("결과 값: " + add(5,10) + "<br>");
+
+        function myFunction() {
+            console.log('Hello World');
+        }
+        myFunction();
+
+        function yourFunction() {
+            return 100;
+            console.log('Hello World');
+        }
+        yourFunction();
+    </script> -->
+
+    <!-- <script>
+        function add(name, n) {
+            document.write(name + "학생이 1부터" + n + "까지 덧셈 수행<br>");
+            let sum = 0;
+            for (let i = 0; i <= n; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+        document.write("결과:" + add('코난',10) + "<br/>");
+        document.write("결과:" + add('장미',10) + "<br/>");
+    </script> -->
+    
+    <!-- <button onclick="printMsg('코난',10)">학생정보</button>
+    <script>
+        function printMsg(name, age) {
+            document.write("학생 이름:<b>" + name + "</b><br>");
+            document.write("학생 나이:<b>" + age + "</b><br>");
+        }
+        </script> -->
+    
+    <!-- <h1 id="alter">Change Colors</h1>
+    <button onclick="change('red')">red</button>
+    <button onclick="change('blue')">blue</button>
+    <button onclick="change('yellow')">yellow</button>
+    <button onclick="change('green')">green</button>
+    <button onclick="change('rebeccapurple')">rebeccapurple</button>
+    <script>
+        const alter=document.getElementById("alter");
+        function change(colors) {
+            // const alter=document.getElementById("alter");
+            alter.style.color=colors;
+        }
+    </script> -->
+
+    <!-- <script>
+        const calSum = (a,b,c) => {
+            const result = a+b+c;
+            return result;
+        }
+        console.log('화살표 함수 호출 결과:', calSum(1,2,3));
+    </script> -->
+
+    <!-- <script>
+        function calTax(price, tax=0.08) {
+            const result = price + price * tax;
+            return result;
+        }
+        const result1 = calTax(100);
+        console.log(result1);
+        const result2 = calTax(100, 0.1);
+        console.log(result2);
+    </script> -->
+
+    <!-- <script>
+        function sample(...items) {
+            console.log(items);
+        }
+        sample(1,2);
+        sample(1,2,3);
+        sample(1,2,3,4);
+
+        function sumAll(...numbers) {
+            // reduce() 배열을 하나의 값으로 줄이는 메서드
+            // (acc:누적값, cur:현재요소, 0:초기값(첫acc값))
+            return numbers.reduce((acc, cur) => acc + cur, 0);
+        }
+
+        console.log(sumAll(1, 2, 3));       // 6
+        console.log(sumAll(5, 10, 20, 5));  // 40
+
+    </script> -->
+
+    <script>
+        function callThreeTimes(callback) {
+            for (var i = 0; i < 3; i++) {
+                callback(i);
+            }
+        }
+        let callback = function (it) {
+            alert(`${it}번째 함수 호출`);
+        }
+        callThreeTimes(callback);
+    </script>
+
+    <!-- <script>
+        function norm(x) {
+            var outerSum = sumSquare();
+            return Math.sqrt(outerSum);
+            function sumSquare() {
+                innerSum = 0;
+                for (var i = 0; i < x.length; i++)
+                    innerSum += x[i]*x[i];
+                return innerSum;
+            }
+        }
+        var a = [2,1,3,5,7];
+        var n = norm(a);
+        console.log(n);
+    </script> -->
+
+    <!-- <script>
+        function fact(n) {
+            if(n<=1) return 1;
+            return n*fact(n-1);
+        }
+        console.log(fact(5));
+
+        var fact = function f(n) {
+            if (n <= 1) return 1;
+            return n*f(n-1);
+        }
+        console.log(fact(5));
+
+        var fact = function(n) {
+            if (n <= 1) return 1;
+            return n * arguments.callee(n - 1);
+        }
+        console.log(fact(5));
+    </script> -->
+
+    <!-- <script>
+        console.log('실행 시작 시간', new Date().toLocaleTimeString());
+        setTimeout(() => {
+            console.log('setTimeout 실행 후 시간', new Date().toLocaleTimeString());
+        }, 2000);
+    </script> -->
+
+    <!-- <script>
+        const array8 = [];
+        console.log('배열의 길이', array8.length);
+        const array9 = [1, '코난', false];
+        console.log('배열의 길이', array9.length);
+        const array10 = [[1,1,1], [2,2,2]];
+        console.log('배열의 길이', array10.length);
+        const array11 = [{id:1, name:'코난'}, {id:2, name:'장미'}];
+        console.log('배열의 길이', array11.length);
+    </script> -->
+
+    <!-- <script>
+        const todos = ['장보기', '업무 메일 확인하기', '홈트'];
+        for (let i = 0; i < todos.length; i++) {
+            console.log(`${i}번째 할 일: ${todos[i]}`);
+        }
+    </script> -->
+
+    <!-- <script>
+        const todos = ['장보기', '업무 메일 확인하기', '홈트'];
+        for (const i in todos) {
+            console.log(`${i}번째 할 일: ${todos[i]}`)
+        }
+    </script> -->
+
+    <!-- <script>
+        const todos = ['장보기', '업무 메일 확인하기', '홈트'];
+        for (const todo of todos) {
+            console.log(`오늘의 할 일:${todo}`)
+        }
+    </script> -->
+
+    <!-- <script>
+        let i = 0;
+        const array = [1,2,3,4,5];
+        while (i < array.length) {
+            console.log(`${i}:${array[i]}`);
+            i++;
+        }
+    </script> -->
+
+    <!-- <script>
+        var a = ["A","B","C"];
+        console.log(a.push("D"));
+        console.log(a);
+        a.push("E","F");
+        
+        var b = ["A","B","C"];
+        console.log(b.pop());
+        console.log(b);
+        
+        var c = ["A","B","C"];
+        console.log(c.shift());
+        console.log(c);
+        
+        var d = ["A","B","C"];
+        console.log(d.unshift("X"));
+        console.log(d);
+    </script> -->
+
+    <!-- <script>
+        var a = ["A","B","C","D"];
+        console.log(a.splice(1,2,"X","Y","Z"));
+        console.log(a)
+        
+        var b = ["A","B","C","D"];
+        console.log(b.splice(2));
+        console.log(b);
+        
+        var c = ["A","B","C","D","E"];
+        console.log(c.splice(-4,2));
+        console.log(c);
+        
+        var d = ["A","B","C","D"];
+        console.log(d.splice(1,0,"X","Y"));
+        console.log(d);
+
+        </script> -->
+
+        <!-- <script>
+            var a = [5,2,7,1,undefined,3,9,8];
+            console.log(a.sort(function(a,b){return a==b}));
+            console.log(a.sort(function(a,b){return a-b}));
+            console.log(a.sort(function(a,b){return b-a}));
+            
+            
+        </script> -->
+
+        <!-- p 140 -->
+        <!-- <script>
+            var a5 = [1,5,4,11,7];
+            a5.sort();
+            a5.sort((a, b) => a - b);
+            console.log(a5);
+            a5.sort((a, b) => b - a);
+            console.log(a5);
+
+            var a6 = ['Kim','Lee','Hong'];
+            a6.sort();
+            a6.sort((a, b) => b - a);
+            a6.sort((a, b) => b > a);
+            
+            a6.sort((a, b) => b > a ? 1 : -1);
+            a6.sort((a, b) => b > a ? 1 : (b < a ? -1 : 0));
+            a6.sort().reverse();
+
+        </script> -->
+
+        <!-- <script>
+            function compareFunc(key) {
+                return function(a,b) {
+                    return a[key]-b[key];
+                }
+            }
+            var people=[
+                {name:"conan", age:10},
+                {name:"rose", age:17},
+                {name:"ran", age:18}
+            ];
+            console.log(people.sort(compareFunc("age")));
+            console.log(people.sort(compareFunc("name")));
+        </script> -->
+
+        <!-- <script>
+            var a=["A",undefined,"B",null, "C",null,null,null];
+            console.log(a.join("-"));
+            console.log(a.join(""));
+        </script> -->
+
+        <!-- <script>
+            var a=["A","B","C"];
+            console.log(a.concat(["D","E"]));
+            console.log(a.concat(["D","E"], ["F","G"]));
+            console.log(a.concat("D",["E",["F","G"]]));
+            console.log(a.concat(1,"X",true));
+        </script> -->
+
+        <!-- <script>
+            var a=["A","B","C","D","E"];
+            console.log(a.slice(1,3));
+            console.log(a.slice(3));
+            console.log(a.slice(1,-1));
+            console.log(a.slice(-3,-2));
+        </script> -->
+
+        <!-- <script>
+            var a=["A","B","C","D","E"];
+            console.log(a.indexOf("C"));
+            console.log(a.lastIndexOf("C"));
+            console.log(a.indexOf("C",3));
+        </script> -->
+
+        <!-- <script>
+            myArray = ['곰','사자','여우','원숭이'];
+            const targetUser = myArray.find((item) => item ==='사자');
+            // 동일한 내용
+            // const targetUser = myArray.find((item)=> {
+            //     return item ==='사자'
+            // });
+            console.log(targetUser);
+            const targetIndex = myArray.findIndex((item)=>item==='곰');
+            console.log(targetIndex);
+        </script> -->
+
+        <!-- <div class="search-word-wrapper">
+            <label>사용자 ID <input id="search-id-input"type="text"></label>
+        </div>
+        <p id="search-result"></p>
+
+        <script>
+            const userList = [{id:123, name:'곰'},{id:1021,name:'사자'},{id:2131,name:'여우'}];
+            const searchIdInput = document.querySelector('#search-id-input');
+            const searchResult = document.querySelector('#search-result');
+            searchIdInput.addEventListener('keyup',() => {
+                const searchID = Number(event.target.value);
+                findUser(searchID);
+            });
+            function findUser(searchId) {
+                const targetData = userList.find((data) => data.id === searchID);
+                if (atrgetData == null) {
+                    searchResult.textContent = '해당 아이디는 존재하지 않음';
+                    return;
+                }
+                searchResult.textContent = targetData.name;
+            }
+        </script> -->
+
+        <!-- <script>
+            var a = [1,2,3,4,5];
+            var sum = 0;
+            a.forEach(function (value){
+                sum += value;
+            })
+            console.log(sum);
+            a.forEach(function(v,i,a){
+                a[i]=v*v;
+            });
+            console.log(a);
+        </script> -->
+
+        <!-- <script>
+            const userList = [
+                {id:1,name:'코난',address:'미란이네'},
+                {id:2,name:'장미',address:'브라운박사네'},
+                {id:3,name:'키드',address:'모름'}
+            ];
+            const container = document.querySelector('.container');
+            userList.forEach((userData)=>{
+                container.innerHTML += `<div class="card">
+                    <h2>${userData.name}</h2>
+                    <p>주소:${userData.address}</p>
+                    </div>`;
+            })
+        </script> -->
+
+        <!-- <script>
+            var a = [1,2,3,4,5];
+            var b = a.map(function(x){return 2*x});
+            console.log(b);
+
+            var people=[
+                {name:"conan",age:10},
+                {name:"rose",age:17},
+                {name:"ran",age:18}
+            ];
+            var names = people.map(people=>people.name);
+            var ages = people.map(people=>people.age);
+            console.log(names);
+            console.log(ages);
+        </script> -->
+
+        <!-- <script>
+            const newArray = [10,20,30,40].filter((value)=>value>=30);
+            console.log(newArray);
+        </script> -->
+</body>
+</html>

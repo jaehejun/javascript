@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="clock">로딩 중...</h1>
+  
+    <script>
+      const clock = document.getElementById('clock');
+  
+      function updateClock() {
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const date = now.getDate();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+  
+        clock.textContent = `${month}월 ${date}일 ${hours}시 ${minutes}분 ${seconds}초`;
+      }
+  
+      updateClock(); // 페이지 로드 직후 한 번 실행
+      setInterval(updateClock, 1000); // 이후 1초마다 갱신
+    </script>
+  </body>
+  </html>

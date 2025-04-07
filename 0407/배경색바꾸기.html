@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경색 바꾸기</title>
+</head>
+
+
+<body>
+    <!-- <button onclick="setNextColor()">배경색 바꾸기</button>
+    <button onclick="setRandomColor()">배경색 랜덤 바꾸기</button>
+
+    <script>
+        const colorList = ['white','yellow','red','green'];
+        let index = 0;
+        function setNextColor() {
+            index = (index + 1) % colorList.length;
+            console.log(index);
+            document.body.style.backgroundColor = colorList[index];
+        }
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        };
+        function setRandomColor() {
+            document.body.style.backgroundColor = getRandomColor();
+        }
+        
+        </script> -->
+    
+        <button id="buttonNextColor">배경색 바꾸기</button>
+        <button id="buttonRandomColor">배경색 랜덤 바꾸기</button>
+        
+        <script>
+        const colorList = ['white','yellow','red','green'];
+        let index = 0;
+        const buttonList = document.getElementById('buttonNextColor');
+        const buttonRandom = document.getElementById('buttonRandomColor');
+        
+        function setNextColor() {
+            index = (index + 1) % colorList.length;
+            document.body.style.backgroundColor = colorList[index];
+        }
+        
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r},${g},${b})`;
+        }
+        
+        function setRandomColor() {
+            document.body.style.backgroundColor = getRandomColor();
+        }
+        
+        buttonList.addEventListener('click', setNextColor);
+        buttonRandom.addEventListener('click', setRandomColor);
+        </script>
+</body>
+</html>
