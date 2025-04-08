@@ -84,8 +84,8 @@
         console.log(a,b);
     </script> -->
 
-    <script>
-        // 속성명 : 변수명
+    <!-- <script>
+        // 속성명(key) : 변수명
         var obj = {a:x,b:y} = {a:1,b:2}; // x=1,y=2
         console.log(x,y);
         ({a:x,b:y}={a:y,b:x}); // x값과 y값 교환
@@ -109,7 +109,7 @@
         //var sin=Math.sin,cos=Math.cos,tan=Math.tan,PI=Math.PI
         ({a=1,b=2,c=3}={a:2,b:4}); //a=2,b=4,c=3
         console.log(a,b,c);
-    </script>
+    </script> -->
 
     <!-- <script>
         var [a,b,c]="ABC"; //var a="A",b="B","C"
@@ -128,6 +128,12 @@
         console.log(person);
         var {name,age,hobby:[hishobby]}=person;
         console.log(name,age,hishobby);
+        var {name,age,hobby:[,hishobby]}=person;
+        console.log(name,age,hishobby);
+        var {name,age,hobby} = person;
+        console.log(name,age,hobby);
+        var {name,age,...hobby} = person;
+        console.log(name,age,hobby);
     </script> -->
 
 <!-- 스트릭트모드 -->

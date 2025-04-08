@@ -9,6 +9,32 @@
 
     <!-- 객체와 프로퍼티 -->
 <!-- <script>
+    var card = {suit:"heart", rank:"A"};
+    console.log(card);
+
+    function Card(suit,rank) {
+        this.suit = suit;
+        this.rank = rank;
+    }
+    var card2 = new Card("하트", "A");
+    console.log(card2);
+
+    var card3 = Object.create(Object.prototype, {
+        suit:{
+            value:"하트",
+            writable:true,
+            enumerable:true,
+            configurable:true
+        },
+        rank:{
+            value:"A",
+            writable:true,
+            enumerable:true,
+            configurable:true
+        }
+    });
+    console.log(card3);
+
     const obj={};
     const person={
         id:1,
@@ -24,8 +50,9 @@
     console.log(person);
 
     const obj2 = {};
-    console.log(obj2.foo);
-    const response={
+    console.log(obj2.foo); //undefined
+
+    const response = {
         result:true,
         items:[{id:1, name:'토끼',age:10},
             {id:2, name:'거북이',age:102}]
@@ -43,26 +70,26 @@
             console.log('메소드2실행');
         }
     };
+    myClass.method1();
     myClass.method2();
 </script> -->
 
 <!-- <script>
     function F(){};
-    console.log(F.prototype);
+    console.log(F.prototype); // {}
 
     F.prototype.prop = "prototype value";
     var obj = new F();
-    console.log(obj.prop);
+    console.log(obj.prop); // prototype value
     
-    obj.prop = "new value";
-    console.log(obj.prop);
-    console.log(F.prototype.prop);
+    obj.prop = "instance value";
+    console.log(obj.prop); // instance value
+    console.log(F.prototype.prop); // prototype value
 </script> -->
 
 <!-- <script>
     function Circle(center,radius){
         console.log(center, radius);
-        console.log(this.center, this.radius);
         this.center = center;
         this.radius = radius;
     }
@@ -73,21 +100,31 @@
     console.log(Circle);
 
     var c1 = new Circle({x:0,y:0},2.0);
+    console.log(c1);
     var c2 = new Circle({x:0,y:1},3.0);
     var c3 = new Circle({x:1,y:0},1.0);
     console.log("넓이=",c1.area());
+
+    console.log("넓이=",Circle.prototype.area());
+    console.log("넓이=",c1.__proto__.area());
+
+    console.log("넓이=",Circle.prototype.area.call(c1));
+    console.log("넓이=",c1.__proto__.area.call(c1));
+
+    console.log("넓이=",c1.prototype.area()); // typeError
 </script> -->
 
 <!-- <script>
     var person = {name:"conan"};
-    console.log("name" in person);
-    console.log("age" in person);
-    console.log("toString" in person);
+    console.log("name" in person); // true
+    console.log("age" in person); // false
+    console.log("toString" in person); // true
     console.log(person.name);
     console.log(person.age);
     console.log(person.toString());
-    console.log(person.hasOwnProperty("name"));
-    console.log(person.hasOwnProperty("toString"));
+
+    console.log(person.hasOwnProperty("name")); // true
+    console.log(person.hasOwnProperty("toString")); // false : Object.prototype에서 상속받음
 </script> -->
 
 <!-- <script>
@@ -102,7 +139,7 @@
 </script> -->
 
 <!-- <script>
-    var jsonString = `{"students":40,"grade":4,"name":"장미반"}`; //문자열
+    var jsonString = `{"students":40,"grade":4,"name":"장미반"}`; // JSON 문자열
     console.log(jsonString);
 
     var data = JSON.parse(jsonString);
@@ -123,7 +160,7 @@
     console.log(str2);
 </script> -->
 
-<script>
+<!-- <script>
     var replacer = (key,value)=>{
         if(typeof value ==='number'){
             return undefined;
@@ -138,7 +175,7 @@
     }
     var str = JSON.stringify(obj,replacer,' ');
     console.log(str);
-</script>
+</script> -->
 
 </body>
 </html>

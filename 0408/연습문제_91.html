@@ -7,38 +7,55 @@
 </head>
 <body>
 <!-- 연습문제 p.91 -->
+<!-- 1 ~ n까지의 원소로 이루어진 배열을 만드는 함수를 재귀함수로 작성
+(array 메소드 사용하지 말고 destructuring 사용) -->
+<!-- makeArray(10); => [1,2,3,4,5,6,7,8,9,10]
+makeReverseArray(5); => [5,4,3,2,1] -->
+<!-- TCO로 작성 -->
+<!-- makeArrayTCO(10); => [1,2,3,4,5,6,7,8,9,10] -->
 
 <script>
-    let arr = [];
+
     function makeArray(n) {
-        if (n >= 1) {
-            makeArray(n-1);
-            arr.push(n);
-            // console.log(arr);
-            return arr;
-        }
+        if (n === 1) return [1];
+        const rest = makeArray(n - 1);
+        return [...rest, n];
     }
-
-    let rArr = [];
+    
     function makeReverseArray(n) {
-        if (n >= 1) {
-            makeReverseArray(n-1);
-            rArr.unshift(n);
-            // console.log(rArr);
-            return rArr;
-        }
+        if (n === 1) return [1];
+        const rest = makeReverseArray(n - 1);
+        return [n, ...rest];
     }
-
-    let tcoArr = [];
-    function makeeArrayTCO(n) {
-        if (n >= 1) {
-            
-        }
+    
+    function makeArrayTCO(n, acc = [], current = 1) {
+        if (current > n) return acc;
+        return makeArrayTCO(n, [...acc, current], current + 1);
     }
+    
     console.log(makeArray(10));
-    consoel.log(makeReverseArray(5));
+    console.log(makeReverseArray(5));
+    console.log(makeArrayTCO(10));
 
-
+    // let arr = [];
+    // function makeArray(n) {
+    //     if (n >= 1) {
+    //         makeArray(n-1);
+    //         arr.push(n);
+    //         // console.log(arr);
+    //         return arr;
+    //     }
+    // }
+    
+    // let rArr = [];
+    // function makeReverseArray(n) {
+    //     if (n >= 1) {
+    //         makeReverseArray(n-1);
+    //         rArr.unshift(n);
+    //         // console.log(rArr);
+    //         return rArr;
+    //     }
+    // }
 </script>
 </body>
 </html>
