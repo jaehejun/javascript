@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 연습문제 p.91 -->
+
+<script>
+    let arr = [];
+    function makeArray(n) {
+        if (n >= 1) {
+            makeArray(n-1);
+            arr.push(n);
+            // console.log(arr);
+            return arr;
+        }
+    }
+
+    let rArr = [];
+    function makeReverseArray(n) {
+        if (n >= 1) {
+            makeReverseArray(n-1);
+            rArr.unshift(n);
+            // console.log(rArr);
+            return rArr;
+        }
+    }
+
+    let tcoArr = [];
+    function makeeArrayTCO(n) {
+        if (n >= 1) {
+            
+        }
+    }
+    console.log(makeArray(10));
+    consoel.log(makeReverseArray(5));
+
+
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+<!-- 호이스팅 -->
     <!-- <script>
         console.log(temp);
         var temp = 2; // undefined
@@ -22,7 +22,7 @@
     </script> -->
 
     <!-- <script>
-        console.log(add(2,3))
+        console.log(add(2,3)) //가능
 
         function add(x,y) {
             var result = x + y;
@@ -35,10 +35,132 @@
             var resutl = x + y;
             return result;
         }
+
+        const p = new Person(); //클래스도 ReferenceError
+        class Person{};
     </script> -->
 
-    
+<!-- 디스트럭처링 -->
+    <!-- <script>
+        var [a,b] = [1,2];
+        console.log(a,b);
+        [a,b] = [2*a,3*b]; // a=2 b=6
+        console.log(a,b);
+        [a,b] = [b,a]; // a=6 b=2
+        console.log(a,b);
+        
+        [a,b,c] = [1,2]; //a=1,b=2,c=undefined
+        console.log(a,b,c);
+        [a,b] = [1,2,3] // a=1,b=2,3은무시
+        console.log(a,b);
+        [,a,,b] = [1,2,3,4] // a=2,b=4
+        console.log(a,b);
+        
+        var array,first,second;
+        array = [first,second] = [1,2,3,4];
+        console.log([first,second] = [1,2,3,4]); // 자바스크립트는 대입식의 평가 결과로 우측 값을 반환
+        // array = [1,2,3,4];
+        console.log(array);
+        console.log(first,second);
+    </script> -->
 
+    <!-- <script>
+        [a,b,...rest] = [1,2,3,4]; // a=1,b=2,rest=[3,4];
+        console.log(a,b,rest);
+        [c,d,...whatever] = [1,2,3,4,5];
+        console.log(c,d,whatever);
+        console.log(typeof(c));
+        console.log(typeof(d));
+        console.log(typeof(whatever));
+        
+        [a=0,b=1,c=2] = [1,2]; //a=1,b=2,c=2
+        console.log(a,b,c);
+
+        function rotation(x,y,theta) {
+            var s=Math.sin(theta), c=Math.cos(theta);
+            return[c*x-s*y,s*x+c*y];
+        }
+        var[a,b] = rotation(1,2,Math.PI/3);
+        console.log(a,b);
+    </script> -->
+
+    <script>
+        // 속성명 : 변수명
+        var obj = {a:x,b:y} = {a:1,b:2}; // x=1,y=2
+        console.log(x,y);
+        ({a:x,b:y}={a:y,b:x}); // x값과 y값 교환
+        console.log(x,y);
+        // {a:x,b:y}={a:y,b:x};
+        ({a:x,b:y}={a:1,c:2}); // x=1,y=undefined
+        console.log(x,y);
+        ({a:x,b:y}={a:1,b:2,c:2}); // x=1,y=2,3은무시됨
+        console.log(x,y);
+        ({sin:sin,cos:cos,tan:tan,PI:PI}=Math);
+        console.log(sin,cos,tan,PI);
+        //var sin=Math.sin,cos=Math.cos,tan=Math.tan,PI=Math.PI
+        
+        ({a:x=1,b:y=2,c:z=3}={a:2,b:4}); //x=2,y=4,z=3
+        console.log(x,y,z);
+        
+        ({a,b}={a:11,b:22}); //{a:a,b:b}={a:11,b:22}
+        console.log(a,b);
+        var {sin,cos,tan,PI}=Math;
+        console.log(sin,cos,tan,PI);
+        //var sin=Math.sin,cos=Math.cos,tan=Math.tan,PI=Math.PI
+        ({a=1,b=2,c=3}={a:2,b:4}); //a=2,b=4,c=3
+        console.log(a,b,c);
+    </script>
+
+    <!-- <script>
+        var [a,b,c]="ABC"; //var a="A",b="B","C"
+        console.log(a,b,c);
+        
+        // function createNumbers(from,to){
+            //     while(from<=to) yield from++;
+            // }
+            // var [a,b,c,d,e] = createNumbers(10,15);
+            
+        var[a,[b,c]]=[1,[2,3]];
+        console.log(a,b,c);
+        var{a:x,b:{c:y,d:z}} = {a:1,b:{c:2,d:3}};
+        console.log(x,y,z);
+        var person = {name:"conan",age:10,hobby:["탐정놀이","축구"]};
+        console.log(person);
+        var {name,age,hobby:[hishobby]}=person;
+        console.log(name,age,hishobby);
+    </script> -->
+
+<!-- 스트릭트모드 -->
+
+    <!-- <script>
+        'use strict'; // 스트릭트모드 활성화
+        x = 10;
+        console.log(x); // 10, 비스트릭트모드에서는 전역변수
+        
+        'use strict'; // 스트릭트모드 활성화
+        function myFunction() {
+            console.log(this); //스트릭트모드에서는 this가 undefined로 설정
+        }
+        myFunction(); // 'this'는 undefined
+        
+        'use strict'; // 스트릭트모드 활성화
+        function sum(a,a) { //매개변수 'a'가 중복됨
+            return a + a;
+        }
+        sum(2,3);
+        console.log(sum(2,3));
+        // SyntaxError:Duplicate parameter ...
+    
+        'use strict'; // 스트릭트모드 활성화
+         eval('var x = 10;');
+         console.log(x);
+    </script> -->
+
+<!-- 스코프와 실행컨텍스트 -->
+
+    <script>
+
+    </script>
 
 </body>
 </html>

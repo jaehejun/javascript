@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 객체와 프로퍼티 -->
+<!-- <script>
+    const obj={};
+    const person={
+        id:1,
+        name:'코난',
+        age:10
+    }
+    console.log(person.id);
+    console.log(person['name']);
+    person.id=2;
+    person['name']='장미';
+    console.log(person.id);
+    console.log(person['name']);
+    console.log(person);
+
+    const obj2 = {};
+    console.log(obj2.foo);
+    const response={
+        result:true,
+        items:[{id:1, name:'토끼',age:10},
+            {id:2, name:'거북이',age:102}]
+    };
+    console.log(response.items[0].name);
+    response.items[1].age = 33;
+    console.log(response.items[1].age);
+    console.log(response);
+
+    const myClass = {
+        method1:function(){
+            console.log('메소드1실행');
+        },
+        method2:()=>{
+            console.log('메소드2실행');
+        }
+    };
+    myClass.method2();
+</script> -->
+
+<!-- <script>
+    function F(){};
+    console.log(F.prototype);
+
+    F.prototype.prop = "prototype value";
+    var obj = new F();
+    console.log(obj.prop);
+    
+    obj.prop = "new value";
+    console.log(obj.prop);
+    console.log(F.prototype.prop);
+</script> -->
+
+<!-- <script>
+    function Circle(center,radius){
+        console.log(center, radius);
+        console.log(this.center, this.radius);
+        this.center = center;
+        this.radius = radius;
+    }
+    Circle.prototype.area = function() {
+        return Math.PI*this.radius*this.radius;
+    };
+
+    console.log(Circle);
+
+    var c1 = new Circle({x:0,y:0},2.0);
+    var c2 = new Circle({x:0,y:1},3.0);
+    var c3 = new Circle({x:1,y:0},1.0);
+    console.log("넓이=",c1.area());
+</script> -->
+
+<!-- <script>
+    var person = {name:"conan"};
+    console.log("name" in person);
+    console.log("age" in person);
+    console.log("toString" in person);
+    console.log(person.name);
+    console.log(person.age);
+    console.log(person.toString());
+    console.log(person.hasOwnProperty("name"));
+    console.log(person.hasOwnProperty("toString"));
+</script> -->
+
+<!-- <script>
+    const userData = {
+        id:1,
+        name:'토끼',
+        age:10
+    };
+    console.log(Object.keys(userData)); 
+    console.log(Object.values(userData)); 
+    console.log(Object.entries(userData)); 
+</script> -->
+
+<!-- <script>
+    var jsonString = `{"students":40,"grade":4,"name":"장미반"}`; //문자열
+    console.log(jsonString);
+
+    var data = JSON.parse(jsonString);
+    console.log(data);
+    console.log(data.students);
+    console.log(data.grade);
+    console.log(data.name);
+</script> -->
+
+<!-- <script>
+    var conan = {name:"conan", age:10};
+    var str = JSON.stringify(conan);
+    console.log(str); // 문자열
+    console.log(str.name);
+    console.log(conan.name);
+
+    var str2 = JSON.stringify(conan,null,' ');
+    console.log(str2);
+</script> -->
+
+<script>
+    var replacer = (key,value)=>{
+        if(typeof value ==='number'){
+            return undefined;
+        }
+        return value;
+    }
+    var obj = {
+        pref:'seoul',
+        orange:100,
+        flag:true,
+        apple:200
+    }
+    var str = JSON.stringify(obj,replacer,' ');
+    console.log(str);
+</script>
+
+</body>
+</html>
