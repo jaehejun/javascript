@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload = () => {
+            const users = [
+                { id: 1, name: "홍길동", tel: "01088889991", addr: "서울" },
+                { id: 2, name: "김길동", tel: "01088889992", addr: "부산" },
+                { id: 3, name: "이길동", tel: "01088889993", addr: "서울" },
+                { id: 4, name: "박길동", tel: "01088889994", addr: "서울" },
+            ];
+            function setBorderStyle(node) {
+                node.style.border = "1px solid black";
+                node.style.border.collapse = "collapse";
+            }
+            const table = document.createElement("table");
+            setBorderStyle(table);
+            // 테이블 헤드
+            const thead = document.createElement("thead");
+            for (const key of Object.keys(users[0])) {
+                const th = document.createElement("th");
+                th.innerHTML = key;
+                setBorderStyle(th);
+                thead.appendChild(th);
+            }
+            const removeTh = document.createElement("th")
+            removeTh.innerHTML = "remove";
+            setBorderStyle(removeTh);
+            thead.appendChild(removeTh);
+            table.appendChild(thead);
+            // 테이블 행
+            for (const user of users) {
+                const tr = document.createElement("tr", { id: user.id });
+                tr.style.border = "1px solid";
+                for (const value of Object.values(user)) {
+                    const td = document.createElement("td");
+                    td.innerHTML = value;
+                    setBorderStyle(td);
+                    tr.appendChild(td);
+                }
+                // 삭제 버튼
+                const removeTd = document.createElement("td");
+                const removeBtn = document.createElement("button");
+                removeBtn.innerHTML = "Remove";
+                removeBtn.onclick = function () {
+                    table.removeChild(tr);
+                }
+                removeTd.appendChild(removeBtn);
+                setBorderStyle(removeTd);
+                tr.appendChild(removeTd);
+                table.appendChild(tr);
+            }
+            // 바디에 삽입
+            document.body.appendChild(table);
+        }
+    </script>
+</body>
+</html>

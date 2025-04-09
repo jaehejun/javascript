@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        function foo() {
+            const x = 1;
+            const y = 2;
+            //일반적으로 클로저라고 하지 않음
+            function bar() {
+                const z = 3;
+                    debugger;
+                console.log(z);
+            }
+            return bar;
+        }
+        const bar = foo();
+        bar();
+    </script> -->
+
+    <!-- <script>
+        function foo() {
+            const x = 1;
+            // bar 함수는 클로저였지만 곧바로 소멸하므로
+            // 클로저라 하지 않음
+            function bar() {
+                debugger;
+                // 상위 스코프의 식별자를 참조
+                consoel.log(x);
+            }
+            bar();
+        }
+        foo();
+    </script> -->
+
+    <!-- <script>
+        function foo() {
+            const x = 1;
+            const y = 2;
+            //클로저
+            //중첩함수 bar는 외부 함수보다 더 오래 유지
+            //상위 스코프의 식별자를 참조
+            function bar() {
+                debugger;
+                console.log(x);
+            }
+            return bar;
+        }
+        const bar = foo();
+        bar();
+    </script> -->
+
+    <script>
+        function makeCounter() {
+            var count = 0;
+            return f; //함수를 리턴
+            function f() {
+                return count++;
+            }
+        } //makeCounter()함수 종료 -> EC는 stack에서 제거
+        var counter = makeCounter();
+        //makeCounter()소멸되지만 반환한 클로저는 counter 변수에 할당되어 호출
+        console.log(counter()); //0
+        console.log(counter()); //1
+        console.log(counter()); //2
+
+        // makeCounter() 호출할 때 마다
+        // makeCounter의 렉시컬 환경 컴포넌트가 새로 생성
+        var counter1 = makeCounter();
+        var counter2 = makeCounter();
+        // 각 클로저는 서로 다른 내부 상태를 저장
+        console.log(counter1()); //0
+        console.log(counter2()); //0
+        console.log(counter1()); //1
+        console.log(counter2()); //1
+
+
+    </script>
+</html>

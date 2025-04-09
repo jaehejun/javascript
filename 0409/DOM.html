@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        function add() {
+            const header=document.createElement('h3'); // 요소 노드 생성
+            const textNode=document.createTextNode('내 이름은 코난입니다');//텍스트 노드 생성
+            header.appendChild(textNode); // 요소 노드와 텍스트 노드 연결
+            document.body.appendChild(header); // 생성한 문서 객체를 body에 추가
+        };
+    </script>
+        <a href="#" onclick="add()">당신의 이름은 무엇입니까?</a> -->
+
+    <!-- <ul id="coffeeList">
+        <li>americano</li>
+        <li>latte</li>
+    </ul>
+    <p>목록에 아이템 추가</p>
+    <button onclick="myFunc()">추가</button>
+    <script>
+        function myFunc() {
+            const node = document.createElement("li");
+            const textnode = document.createTextNode('cappuccino');
+            node.appendChild(textnode);
+            document.getElementById("coffeeList").appendChild(node);
+        }
+    </script> -->
+
+    <!-- <script>
+        function add() {
+            const img = document.createElement('img');
+            img.src='./conan.jpg';
+            img.width = 100;
+            document.body.appendChild(img);
+        };
+    </script>
+    <a href="#"onclick="add()">[이미지 추가]</a> -->
+
+    <!-- <script>
+        function add() {
+            const img=document.createElement('img');
+            img.setAttribute('src','./conan.jpg');
+            img.setAttribute('width',100);
+            document.body.appendChild(img);
+            document.body.appendChild(img);
+        };
+    </script>
+    <a href="#" onclick="add()">[이미지 추가]</a> -->
+
+    <!-- <script>
+        //이벤트 연결
+        window.onload = function() {
+            //문서 객체 선택
+            let header = document.getElementById('header');
+            // 문서 객체 조작
+            header.style.color = 'orange';
+            header.style.background = 'red';
+            header.innerHTML = 'From JavaScript';
+        };
+    </script>
+    <h1 id="header">Header</h1> -->
+
+    <!-- <script>
+        //이벤트 연결
+        window.onload = function() {
+            // 문서 객체 선택
+            let header = document.querySelector('h1');
+            // 문서 객체 조작
+            header.style.color = 'orange';
+            header.style.background = 'red';
+            header.innerHTML = 'From JavaScript';
+        };
+    </script>
+    <h1>Header</h1>
+    <h1>Header</h1>
+    <h1>Header</h1> -->
+
+    <!-- 모든 'h1'요소에 대해 스타일 지정하기 -->
+
+    <!-- <script>
+        window.onload = function() {
+            let headers = document.querySelectorAll('h1');
+            // console.log(headers); // NodeList(3) [h1,h1,h1]
+            headers.forEach(function(header){
+                header.style.color = 'orange';
+                header.style.background = 'red';
+                header.innerHTML = 'From JavaScript';
+            });
+        };
+    </script>
+    <h1>Header</h1>
+    <h1>Header</h1>
+    <h1>Header</h1> -->
+
+    <!-- <p id="msg">문서 객체 스타일 변경하기</p>
+    <input type="button" onclick="textstyle()" value="텍스트 스타일 변경">
+    <input type="button" onclick="texthidden()" value="텍스트 숨기기">
+    <input type="button" onclick="textvisible()" value="텍스트 보이기">
+    <script>
+        function textstyle() {
+            document.getElementById("msg").style.color = "blue";
+            document.getElementById("msg").style.fontSize = "30px";
+            document.getElementById("msg").style.fontStyle = "italic";
+        };
+        function texthidden() {
+            document.getElementById("msg").style.visibility = "hidden";
+        };
+        function textvisible() {
+            document.getElementById("msg").style.visibility = "visible";
+        };
+    </script> -->
+
+    <!-- <script>
+        window.onload = function() {
+            //문서 객체를 추가
+            let output = '';
+            for (let i = 0; i < 256; i++){
+                output += '<div></div>';
+            }
+            // debugger;
+            document.body.innerHTML = output;
+            //문서 객체를 선택
+            let divs = document.querySelectorAll('div');
+            for (let i = 0; i < divs.length; i++){
+                let div = divs[i];
+                //스타일을 적용
+                div.style.height = '2px';
+                div.style.background = `rgb(${i},${i},${i})`;
+            }
+        };
+    </script> -->
+
+    <!-- <script>
+        window.onload = function() {
+            let output = '';
+            for (let i = 0; i < 5; i++) {
+                output += '<h1>Header - ' + i + '</h1>';
+            }
+            // 문서 객체 내부의 글자를 변경
+            // document.body.textContent = output; // 문서 객체 내부 글자를 순수 텍스트 형식으로 가져옴
+            document.body.innerHTML = output; // 문서 객체 내부 글자의 HTML 태그를 반영해 가져옴
+        };
+    </script> -->
+
+    <!-- <img id="image"/>
+    <script>
+        window.onload = function() {
+            let image = document.getElementById('image');
+            image.src = 'https://picsum.photos/300/200';
+            image.width = 300;
+            image.height = 200;
+        };
+    </script> -->
+
+    <!-- <script>
+        window.onload = function() {
+            // 속성을 지정
+            document.body.setAttribute('data-custom','value');
+            //속성을 추출
+            let dataCustom = document.body.getAttribute('data-custom');
+            alert(dataCustom);
+        };
+    </script> -->
+
+    <!-- <button class="button">버튼임</button>
+    <script>
+        const button = document.querySelector('button');
+        //버튼 요소를 클릭하면 알림창을 표시하는 이벤트 처리
+        button.addEventListener('click',onClickButton);
+        function onClickButton() {
+            alert('클릭 이벤트 발생');
+        }
+    </script> -->
+    
+    <!-- <button onclick="alert('click1')">버튼</button> -->
+
+
+    <!-- <script>
+        function buttonClick() {
+            alert('click2');
+        }
+    </script>
+    <button onclick="buttonClick()">버튼</button> -->
+
+    <!-- <script>
+        window.onload = function() {
+            let button = document.getElementById('button');
+            button.onclick = function() {
+                alert('click3');
+            };
+        };
+    </script>
+    <button id="button">버튼</button> -->
+
+    <!-- <script>
+        window.onload = function() {
+            let button = document.getElementById('myLink');
+            button.onclick = function() { //이벤트 연결
+                return false; //기본 이벤트 제거
+            };
+        };
+    </script>
+    <a id="myLink" href="http://www.naver.com">하이퍼링크</a> -->
+
+    <!-- <script>
+        function mouseoverevent() {
+            alert("내이름은 코난.탐정이죠...");
+        }
+    </script>
+    <p onmouseover="mouseoverevent()">마우스를 여기에...</p> -->
+
+    <!-- <input type="text" id="input1" onfocus="focusevent()" onblur="blurevent()"/>
+    <script>
+        function focusevent() {
+            document.getElementById("input1").style.background = "aqua";
+        }
+        function blurevent() {
+            document.getElementById("input1").style.background = "white";
+        }
+    </script> -->
+
+    <!-- <input type="text" id="input2" onkeydown="keydownevent()"/>
+    <script>
+        function keydownevent() {
+            document.getElementById("input2");
+            alert("키 눌림");
+        }
+    </script> -->
+
+    <!-- <input type="text" maxlength="6"/>
+    <span>-</span>
+    <input type="text" maxlength="7"/>
+    <script>
+        window.onload = function() {
+            let input_1 = document.querySelectorAll('input')[0];
+            let input_2 = document.querySelectorAll('input')[1];
+            input_1.onkeydown = function() { // input_1
+                // 글자 개수가 여섯 개 이상일 경우
+                if (6 <= input_1.value.length) {
+                    //input_2 문서 객체로 초점을 이동
+                    input_2.focus();
+                }
+            };
+            input_2.onkeydown = function(event) { //input_2
+                console.log(event);
+                //사용자의 입력이 '백 스페이스'이고 입력된 글자가 없는 경우
+                if (event.keyCode == 8 && input_2.value.length == 0) {
+                    input_1.focus();
+                }
+            };
+        };
+    </script> -->
+
+    <!-- <textarea class="textarea"></textarea>
+    <script>
+        document.querySelector('.textarea').addEventListener('keydown',() => {
+            console.log('키가 눌렸음');
+        });
+        document.querySelector('.textarea').addEventListener('keypress',() => {
+            console.log('문자가 입력되었음');
+        });
+        document.querySelector('.textarea').addEventListener('keyup',() => {
+            console.log('키 눌림이 해제됐음');
+        });
+    </script> -->
+
+    <!-- <textarea class="textarea"></textarea>
+    <p>현재<span class="string_num">0</span>문자를 입력 중입니다.</p>
+    <script>
+        const textarea = document.querySelector('.textarea');
+        const string_num = document.querySelector('.string_num');
+        textarea.addEventListener('keyup',onKeyup);
+        function onKeyup() {
+            const inputText = textarea.value;
+            string_num.innerText = inputText.length;
+        }
+    </script> -->
+</body>
+</html>

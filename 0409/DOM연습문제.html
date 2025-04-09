@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 다음 users를 이용하여 <table>을 브라우저 Node를 활용하여 작성
+    (마지막 컬럼은 삭제버튼)
+    const users = [
+    { id:1,name:'홍길동',tel:'01088889991',addr:'서울'},
+    { id:2,name:'김길동',tel:'01088889992',addr:'부산'},
+    { id:3,name:'이길동',tel:'01088889993',addr:'서울'},
+    { id:4,name:'박길동',tel:'01088889994',addr:'서울'},
+    ]; -->
+    
+    <script>
+        const users = [
+        { id:1,name:'홍길동',tel:'01088889991',addr:'서울'},
+        { id:2,name:'김길동',tel:'01088889992',addr:'부산'},
+        { id:3,name:'이길동',tel:'01088889993',addr:'서울'},
+        { id:4,name:'박길동',tel:'01088889994',addr:'서울'},
+    ];
+    
+    // 1. table 요소 생성
+    const table = document.createElement('table');
+    table.border = '1';
+    table.style.borderCollapse = 'collapse';
+
+    // 2. 테이블 맨 위 제목줄(1행)
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr'); // 제목줄
+    
+    // const headers = ['ID', '이름', '전화번호', '주소', '삭제']; //하드코딩
+    const headers = Object.keys(users[0]); // ['id','name','tel','addr']
+    headers.push('delete'); // 마지막에 삭제 버튼 열 추가
+
+    headers.forEach(headerText => {
+        const th = document.createElement('th'); // <th>는 제목 셀
+        th.textContent = headerText; // 텍스트 채우기
+        th.style.padding = '5px'; // 여백
+        headerRow.appendChild(th); // 행에 제목 셀 추가
+    });
+
+    thead.appendChild(headerRow); // <thead>에 행 추가
+    table.appendChild(thead); // <table>에 <thead> 추가
+
+    // 3. 본문 데이터 행(2~5)
+    const tbody = document.createElement('tbody'); // <tbody> 본문 시작
+
+    users.forEach(user => {
+        const row = document.createElement('tr'); // 새 행
+
+        Object.values(user).forEach(value => {
+            const td = document.createElement('td'); // 데이터 셀
+            td.textContent = value; // 셀에 users 배열 각 객체의 값
+            td.style.padding = '5px';
+            row.appendChild(td); // 현재 줄에 데이터 셀 추가
+        });
+        // 삭제 버튼 셀
+        const deleteCell = document.createElement('td');
+        const btn = document.createElement('button'); // <button> 요소 생성
+        btn.textContent = '삭제';
+        btn.onclick = function() {
+            tbody.removeChild(row); // 또는 row.remove(); // 버튼 누르면 해당 행(줄) 삭제
+        };
+        deleteCell.appendChild(btn); //삭제 셀에 버튼추가
+        row.appendChild(deleteCell); //현재 줄에 삭제셀 추가
+
+        tbody.appendChild(row); // 본문에 현재 줄 추가
+    });
+
+    // 4. 완성된 테이블 화면에 보이게
+    table.appendChild(tbody); // 테이블에 본문 <tbody> 추가
+    document.body.appendChild(table); // document body에 테이블 전체 추가
+    </script>
+</body>
+</html>

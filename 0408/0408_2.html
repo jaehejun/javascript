@@ -74,7 +74,7 @@
     myClass.method2();
 </script> -->
 
-<!-- <script>
+<script>
     function F(){};
     console.log(F.prototype); // {}
 
@@ -85,7 +85,8 @@
     obj.prop = "instance value";
     console.log(obj.prop); // instance value
     console.log(F.prototype.prop); // prototype value
-</script> -->
+    console.log(obj.prop === F.prototype.prop);
+</script>
 
 <!-- <script>
     function Circle(center,radius){

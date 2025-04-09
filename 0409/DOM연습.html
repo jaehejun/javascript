@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const users = [
+        { id:1, name:'홍길동', tel:'01088889991', addr:'서울'},
+        { id:2, name:'김길동', tel:'01088889992', addr:'부산'},
+        { id:3, name:'이길동', tel:'01088889993', addr:'서울'},
+        { id:4, name:'박길동', tel:'01088889994', addr:'서울'},
+        ];
+
+        // 테이블 생성
+        const table = document.createElement('table');
+        table.border = '1';
+        // table.style.borderCollapse = 'collapse';
+
+        // 제목 행(줄)
+        const tr1 = document.createElement('tr');
+        for (const key in users[0]) {
+            const th = document.createElement('th');
+            th.textContent = key;
+            tr1.appendChild(th);
+        }
+
+        const th = document.createElement('th');
+        th.textContent = '삭제';
+        tr1.appendChild(th);
+        table.appendChild(tr1);
+
+        // 데이터 행(본문줄)
+        for (let i = 0; i < users.length; i++) {
+            const tr = document.createElement('tr');
+            for (let key in users[i]) {
+                const td = document.createElement('td');
+                td.textContext = users[i][key];
+                tr.appendChild(td);
+            }
+
+            //삭제 버튼 셀
+            const td = document.createElement('td');
+            const btn = document.createElement('button');
+            btn.textContent = 'delete';
+            btn.onclick = () => tr.remove();
+            td.appendChild(btn);
+            tr.appendChild(td);
+
+            table.appendChild(tr);
+        }
+
+        //화면에 표시
+        document.body.appendChild(table);
+    </script>
+</body>
+</html>
