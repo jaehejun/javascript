@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Event State</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 100px;
+        background-color: yellow;
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;
+        margin: auto;
+      }
+
+      .caption {
+        text-align: center;
+        font-size: 14px;
+        color: steelblue;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="eventBox">
+      <p id="title">마우스 이벤트 알아보기</p>
+      <p id="count">0</p>
+    </div>
+    <p class="caption" id="caption">영역(div 태그 이용)의 초기 상태</p>
+
+    <script>
+      let enterCount = 0;
+      let leaveCount = 0;
+
+      const box = document.getElementById("eventBox");
+      const title = document.getElementById("title");
+      const count = document.getElementById("count");
+      const caption = document.getElementById("caption");
+
+      box.addEventListener("mouseenter", () => {
+        enterCount++;
+        title.textContent = "마우스 포인트 들어옴";
+        count.textContent = enterCount;
+        caption.textContent = `영역에 마우스가 ${enterCount}번째 들어옴`;
+      });
+
+      box.addEventListener("mouseleave", () => {
+        leaveCount++;
+        title.textContent = "마우스 포인트 나감";
+        count.textContent = `최종 횟수 : ${leaveCount}`;
+        caption.textContent = `영역에 마우스가 ${leaveCount}번째 나감`;
+      });
+    </script>
+  </body>
+</html>

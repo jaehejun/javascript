@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        const conan = new Person('코난');
+
+        // new Person('코난')
+        // -> const obj = {}; 빈 객체 생성
+        // -> obj.__proto__ = Person.prototype; 프로토타입 연결
+        // -> Person.call(obj, '코난'); 생성자 함수 실행(this 바인딩)
+        // -> return obj;
+
+        //.__proto__ 객체의 부모(prototype 객체) 참조
+        // 모든 객체는 Object 객체의 인스턴스
+        
+        console.log(conan.__proto__); // {} constructor: f Person(name) : Person.prototype객체를 참조
+        /// conan.__proto__ === Person.prototype
+        console.log(conan.__proto__.__proto__); // constructor: f Object() : Object.prototype을 참조
+        /// Person.prototype.__proto__ === Object.prototype
+        console.log(conan.__proto__.__proto__.__proto__); // null
+
+        console.log(Person.__proto__); // f() { [native code]} : Function.prototype객체를 참조
+        /// Person.__proto__ === Function.prototype
+        console.log(Person.__proto__.__proto__); // constructor : f Object() : Object.prototype을 참조
+        /// Function.prototype.__proto__ === Object.prototype
+        console.log(Person.__proto__.__proto__.__proto__); // null
+        
+
+        
+        // prototype 속성은 생성자 함수에만 있음 : 생성자가 아닌 함수(화살표함수, 생성자로 사용되지 않는 함수들의 .__proto__인 Function)는 prototype 속성 없음음) -> 일반객체 {} 또는 new로 생성된 객체는 없음
+        // 모든 함수는 객체이자 Function 객체의 인스턴스 -> 모든 함수는 Object 객체의 인스턴스
+
+        // Person() 생성자 함수만 prototype 속성을 가지고 있음
+
+        console.log(Person.prototype); //{} constructor: f Person(name) : Person.prototype객체를 참조
+        console.log(Person.__proto__.prototype); // Function.prototype 객체는 함수지만 생성자 함수가 아님 -> undefined
+        console.log(Person.__proto__.__proto__.prototype); // Object.prototype 객체는 함수 아님 -> undefined
+        console.log(conan.prototype); // undefined
+        console.log(conan.__proto__.prototype); // Person.prototype은 객체이므로 prototype 속성 없음 : undefined
+        console.log(conan.__proto__.__proto__.prototype); // undefined
+        // console.log(conan.__proto__.__proto__.__proto__.prototype); // TypeError:Cannot read properties of null
+
+
+        function foo() {
+            const arr = [1,2,3,4,5];
+            let sum = 0;
+            arr.forEach((v) => sum += v);
+            return sum;
+        }
+
+        console.log(foo);
+        // 자바스크립트에서 function으로 선언한 함수는 암묵적으로 생성자(constructor)로 간주됨
+        const obj = new foo();
+        // const obj = {}; // 1. 새 객체 생성
+        // obj.__proto__ = foo.prototype; // 2. 그 객체의 프로토타입을 foo.prototype으로 연결
+        // const result = foo.call(obj); // 3. foo 함수 실행 (this는 obj로 바인딩됨)
+        // return (result !== null && typeof result === 'object') ? result : obj;
+        // 📌 자바스크립트 규칙:
+        // new를 쓴 생성자 함수가 객체를 명시적으로 리턴하지 않으면, 새로 만든 객체(this)가 리턴됨.
+
+        console.log(obj);
+    </script>
+</body>
+</html>

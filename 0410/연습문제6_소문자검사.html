@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checkLogin() {
+            const userId = document.loginForm.userId.value;
+            const userPassword = document.loginForm.userPassword.value;
+            if (!userId || !userPassword) {
+                alert("값을 입력하세요");
+                return false;
+            }
+            for (let char of userId) {
+                if (char < 'a' || char > 'z') {
+                    alert("아이디는 영문 소문자만 입력 가능");
+                    return false;
+                }
+            }
+            for (let num of userPassword) {
+                if (num < '0' || num > '9') {
+                    alert("비밀번호는 숫자만 입력 가능");
+                    return false;
+                }
+            }
+            alert("이상없음");
+        }
+    </script>
+    <form name="loginForm">
+        <p>아이디 : <input type="text" name="userId">
+        <p>비밀번호 : <input type="text" name="userPassword">
+        <p><input type="submit" value="전송" onclick="checkLogin()">
+    </form>
+</body>
+</html>

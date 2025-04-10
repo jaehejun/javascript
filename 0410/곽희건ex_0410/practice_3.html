@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .showAnswer {
+        cursor: pointer;
+      }
+      .answer {
+        display: none;
+      }
+    </style>
+    <script>
+      function showAnswer(index) {
+        const answers = document.querySelectorAll(".answer");
+        answers[index].style.display = "inline";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>질문 1 : 대한민국의 수도는?</h1>
+    <p class="showAnswer" onclick="showAnswer(0)">[정답 보기]</p>
+    <b class="answer">서울</b>
+    <h1>질문 2 : 대한민국의 국보 1호는?</h1>
+    <p class="showAnswer" onclick="showAnswer(1)">[정답 보기]</p>
+    <b class="answer">숭례문</b>
+  </body>
+</html>

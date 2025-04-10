@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        function checkForm() {
+            alert("이름은" + document.formname.inputname.value + "입니다");
+        }
+    </script>
+    <form name="formname">
+        <p>이름:<input type="text" name="inputname">
+            <input type="submit" value="전송" onclick="checkForm()">
+    </form> -->
+
+    <!-- <script>
+        function checkLogin() {
+            let form = document.loginForm;
+            if (form.userId.value =="") {
+                alert("아이디를 입력해주세요.");
+                form.userId.focus();
+                return false; // submit이벤트가 실패했다는 명확한 의미 전달 위해 return false
+            } else if (form.userPwd.value == "") {
+                alert("비밀번호를 입력해주세요");
+                form.userPwd.focus();
+                return false;
+            }
+            form.submit();
+        }
+    </script>
+    <form name="loginForm" action="member/resultMember.jsp" method="post">
+        <p>아이디 : <input type="text" name="userId">
+        <p>비밀번호 : <input type="password" name="userPwd">
+        <p><input type="button" value="전송" onclick="checkLogin()">
+    </form> -->
+
+    <!-- <script>
+        function checkForm() {
+            if (document.formname.inputname.value.length < 6 ||
+            document.formname.inputname.value.length > 12) {
+                alert("이름을 6~12자 이내로 입력하세요");
+                document.formname.inputname.select();
+            }
+        }
+    </script> -->
+    <!-- <script>
+        function checkForm() {
+            if(!isNaN(document.formname.inputname.value.substr(0,1))) {
+                alert("이름은 숫자로 시작할 수 없음!");
+                documnet.formname.inputname.select();
+            }
+        }
+    </script>
+    <form name="formname">
+        <p>이름 : <input type="text" name="inputname">
+            <input type="submit" value="전송" onclick="checkForm()">
+    </form> -->
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- ❖이미지 갤러리 만들기
+▪ 총 5개의 ‘images’폴더의 이미지(pic_1.jpg ~ pic_5.jpg)를 사용해갤러리 만들기
+▪ 예제를 실행하면 처음 화면에는 pic_1.jpg가 화면에 출력
+▪ [다음]버튼을 누르면 pic_2.jpg, pic_3.jpg... ,pic_5.jpg가 순서대로 출력
+▪ [이전]버튼을 누르면 pic_5.jpg,pic_4.jpg, ..., pic_1.jpg가 순서대로 출력
+▪ 함수 활용하기 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let imgNum = 0;
+      let imgSrcList = [
+        "pic_1.jpg",
+        "pic_2.jpg",
+        "pic_3.jpg",
+        "pic_4.jpg",
+        "pic_5.jpg",
+      ];
+      function next() {
+        imgNum = (imgNum + 1) % imgSrcList.length;
+        document.getElementById("image").src = `./img/${imgSrcList[imgNum]}`;
+      }
+      function prev() {
+        imgNum = (imgNum - 1 + imgSrcList.length) % imgSrcList.length;
+        document.getElementById("image").src = `./img/${imgSrcList[imgNum]}`;
+      }
+    </script>
+  </head>
+  <body>
+    <img id="image" src="./img/pic_1.jpg" width="300" />
+    <br />
+    <button onclick="prev()">이전</button>
+    <button onclick="next()">다음</button>
+  </body>
+</html>

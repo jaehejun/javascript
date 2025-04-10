@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>질문1 : 대한민국의 수도는?</h1>
+    <p onclick="textvisible('id1')">[정답보기]</p>
+    <p id="id1">서울</p>
+    <h1>질문2 : 대한민국의 국보1호는?</h1>
+    <p onclick="textvisible('id2')">[정답보기]</p>
+    <p id="id2">숭례문</p>
+    <script>
+        document.getElementById('id1').style.visibility="hidden";
+        document.getElementById('id2').style.visibility="hidden";
+        function textvisible(id) {
+            document.getElementById(id).style.visibility = "visible";
+        }
+    </script>
+</body>
+</html>
+
+
+     

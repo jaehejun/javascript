@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        transition: opacity 3s ease;
+      }
+
+      .fade-out {
+        opacity: 0;
+      }
+      #move-box {
+        transition: transform 0.5s ease;
+        position: relative;
+        background-color: yellow;
+        width: 120px;
+        height: 120px;
+      }
+    </style>
+    <script>
+      function fadeOutText() {
+        const title = document.querySelector("h1");
+        title.classList.add("fade-out");
+      }
+      let x = 0;
+      function moveRight() {
+        x += 50;
+        const box = document.getElementById("move-box");
+        box.style.transform = `translateX(${x}px)`;
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 버튼을 눌렀을 때 효과 메소드를 이용하여 <h1>내용</h1>이 점점 투명해지면서 사라지도록 코드 작성하기 (사라지는 속도는 3초) -->
+    <button onclick="fadeOutText()">버튼</button>
+    <h1>내용</h1>
+    <!-- 버튼을 누를  때마다 <div>내용</div> 태그가 50px 단위로 오른쪽으로 이동하게 하는 코드 작성하기 (이동 속도는 0.5) -->
+    <button onclick="moveRight()">버튼</button>
+    <div id="move-box">
+      <h1>내용</h1>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!-- ❖마지막 이미지를 지정된 시간(1초)마다 첫 번째 위치로 이동시켜 슬라이더 효과 주기
+▪ 위치 지정해서 추가 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .image-wrapper {
+        display: flex;
+      }
+    </style>
+    <script>
+      var imgSrcList = ["pic_1.jpg", "pic_2.jpg", "pic_3.jpg"];
+
+      setInterval(() => {
+        var tmpList = [];
+        tmpList.push(imgSrcList[2], imgSrcList[0], imgSrcList[1]);
+        const imgList = document.querySelectorAll(".images");
+        for (let i = 0; i < 3; i++) {
+          imgList[i].setAttribute("src", `./img/${tmpList[i]}`);
+        }
+        imgSrcList = tmpList;
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <div class="image-wrapper">
+      <img class="images" src="./img/pic_1.jpg" />
+      <img class="images" src="./img/pic_2.jpg" />
+      <img class="images" src="./img/pic_3.jpg" />
+    </div>
+  </body>
+</html>
