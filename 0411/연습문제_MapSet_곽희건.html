@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 이전 Array.prototype 에 Set 을 이용하여 uniqBy 함수도 추가하시오.
+Array.prototype.uniqBy = function (prop) {
+  const result = new Set();
+  for (const item of this) {
+    result.add(item[prop]);
+  }
+  console.log([...result]);
+};
+const hong = { id: 1, name: "Hong", dept: "HR" };
+const kim = { id: 2, name: "Kim", dept: "Server" };
+const lee = { id: 3, name: "Lee", dept: "Front" };
+const park = { id: 4, name: "Park", dept: "HR" };
+const ko = { id: 7, name: "Ko", dept: "Server" };
+const loon = { id: 5, name: "Loon", dept: "Sales" };
+const choi = { id: 6, name: "Choi", dept: "Front" };
+const users = [hong, kim, lee, park, ko, loon, choi];
+users.uniqBy("dept"); //['HR', 'Server', 'Front', 'Sales']
+    </script>
+</body>
+</html>

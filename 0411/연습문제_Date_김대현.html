@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 두 날짜의 초 차이 계산
+const day1 = new Date("1970-01-01");
+const day2 = new Date("1970-01-02");
+console.log((day2 - day1) / 1000);
+
+//랜덤 날짜 5개 내림차순 정렬
+const randomDays = () => {
+    const cur = new Date();
+    const year = cur.getFullYear();
+    const month = cur.getMonth() + 1;
+    const lastDay = new Date(year, month, 0).getDate();
+    const arr = [];
+    for (let i = 0; i < 5; i++) {
+        let temp = Math.floor(Math.random() * lastDay) + 1;
+        arr.push(new Date(`${year}-${month}-${temp}`));
+    }
+    arr.sort((a, b) => b - a);
+    return arr;
+};
+
+console.log(randomDays());
+
+// 1년 후의 요일 출력
+const cur = new Date();
+const oneYearLater = new Date(cur);
+oneYearLater.setFullYear(cur.getFullYear() + 1);
+const days = ["일", "월", "화", "수", "목", "금", "토"];
+console.log(days[oneYearLater.getDay()]);
+
+//100일 후의 날짜 출력
+const hundredDaysLater = new Date(cur);
+hundredDaysLater.setDate(cur.getDate() + 100);
+console.log(hundredDaysLater);
+
+// 이번 달 달력 출력
+const printCalendar = () => {
+    const cur = new Date();
+    const year = cur.getFullYear();
+    const month = cur.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
+
+    console.log(`${year}년 ${month + 1}월`);
+    console.log("일 월 화 수 목 금 토");
+
+    let calendar = Array(firstDay).fill("   ");
+
+    for (let date = 1; date <= lastDate; date++) {
+        calendar.push(date.toString().padStart(2, " ") + " ");
+    }
+
+    while (calendar.length % 7 !== 0) {
+        calendar.push("   ");
+    }
+
+    for (let i = 0; i < calendar.length; i += 7) {
+        console.log(calendar.slice(i, i + 7).join(""));
+    }
+};
+
+printCalendar();
+    </script>
+</body>
+</html>

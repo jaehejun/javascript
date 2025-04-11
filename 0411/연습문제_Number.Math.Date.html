@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- Date 객체 : 날짜나 시간 관련 정보를 제공
+- 날짜/시간 정보를 화면에 표시하고 싶을 떄
+- 날짜를 기준으로 처리를 구분하고 싶을 때
+
+getFullYear() 연도 불러오기
+getMonth() 월 정보 가져오기(0: 1월, 11: 12월)
+getDate() 날짜 정보 가져오기
+getDay() 일 정보 가져오기 (0: 일요일, 6: 토요일)
+getHours() 시간 정보 가져오기
+getMinutes() 분 정보 가져오기
+getSeconds() 초 정보 가져오기 -->
+
+<body>
+    <!-- <p id="log"></p>
+    <script>
+        const totalTime = 10000; //10초
+        const oldTime = Date.now();
+        const timerId = setInterval(() => {
+            const currentTime = Date.now();
+            const diff = currentTime - oldTime; //시간의 차 구함
+            const remainMSec = totalTime - diff; //남은 밀리초 계산
+            const remainSec = Math.ceil(remainMSec / 1000); //밀리초를 정수 초단위로 변환(3.3 -> 4)
+            // const remainSec = Math.floor(remainMSec / 1000); //밀리초를 정수 초단위로 변환(3.3 -> 3)
+            let label = `남은시간${remainSec}초`;
+            if (remainMSec <= 0) { // 0초 이하의 처리 작업
+                clearInterval(timerId); //타이머 종료
+                label = '종료'; //타이머 종료를 표시
+            }
+            //화면에 표시
+            document.querySelector('#log').innerHTML = label;
+        });
+    </script> -->
+
+
+    <!-- p.212 연습문제 -->
+    <!-- 1) 1970년 1월 1일과 1970년 1월 2일의 차이를 초로 나타내시오 -->
+    <script>
+        const day1 = new Date(1970,1,1);
+        const day2 = new Date(1970,1,2)
+        const sec = day2-day1;
+        console.log(sec / 1000);
+    </script>
+        
+    <!-- 2) 이 달의 날짜 5개를 무작위로 만들어 역순으로 정렬하시오 -->
+    <script>
+        const day = new Date();
+        const startDate = new Date(day.getFullYear(), day.getMonth(), 1);
+        console.log(startDate);
+        
+        const endDate = new Date(day.getFullYear(), day.getMonth() + 1, 0);
+        console.log(endDate);
+
+        const randomDateSet = new Set();
+        
+        // while (randomDateSet.size < 5)
+        // {
+        //     const randomTime = Math.random() * (endDate - startDate) + startDate.getTime();
+        //     randomDateSet.add(new Date(randomTime));
+        // }
+        // console.log(randomDateSet);
+        
+        const randomTime = Math.random() * (endDate - startDate) + startDate.getTime();
+        console.log(new Date(randomTime));
+
+
+    </script>
+    <!-- 3) 내년(2026)의 오늘의 요일을 출력하시오 -->
+    <script>
+        const nextYear = new Date();
+        nextYear.setFullYear(2026);
+        console.log(['월','화','수','목','금','토','일'][nextYear.getDay()]);
+    </script>
+
+    <!-- 4) 오늘로 부터 100일 후의 날짜는? -->
+    <script>
+        const today = new Date();
+        const day100 = new Date();
+        day100.setDate(today.getDate() + 100);
+        console.log(day100);
+    </script>
+
+
+    <!-- p.213 연습문제
+    특정 날짜를 받으면 해당 월의 달력을 출력하시오 -->
+</body>
+</html>
