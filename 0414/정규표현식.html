@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        const tel = "010-1234-567팔팔";
+        const regExp = /^\d{3}-\d{4}-\d{4}$/;
+        console.log(regExp.test(tel));
+
+        const target = 'Yesterday is history';
+        const regexp = /is/i;
+        console.log(regexp.test(target));
+    </script> -->
+
+
+    <!-- <script>
+        // new RegExp(pattern, [,flags])
+        const target = 'Yesterday is history';
+        const regexp = new RegExp(/is/i);
+        // const regexp = new RegExp(/is/,"i");
+        // const regexp = new RegExp("is","i");
+        console.log(regexp.test(target));
+
+        const count = (str, char) => (str.match(new RegExp(char,'gi'))??[]).length;
+        console.log(count('Yesterday is history','is'));
+        console.log(count('Yesterday is history','xx'));
+    </script> -->
+
+    <!-- <script>
+        const target = 'Yesterday is history';
+        const regExp = /is/;
+        const regExp2 = /is/g;
+        console.log(regExp.exec(target));
+        console.log(regExp.test(target));
+        console.log(target.match(regExp));
+        console.log(target.match(regExp2));
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'Is this all there is?';
+        console.log(target.match(/is/));
+        console.log(target.match(/is/i));
+        console.log(target.match(/is/g));
+        console.log(target.match(/is/ig));
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'Yesterday is history';
+        const regExp = /.../g;
+        console.log(target.match(regExp));
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'A AA B BB Aa Bb AAA';
+
+        const regExp = /A{1,2}/g;
+        console.log(target.match(regExp));
+
+        const regExp2 = /A{2}/g;
+        console.log(target.match(regExp2));
+
+        const regExp3 = /A{2,}/g;
+        console.log(target.match(regExp3));
+
+        const regExp4 = /A+/g; // /A{1,}/g 와 같음 
+        console.log(target.match(regExp4));
+
+        const target2 = 'color colour';
+        const regExp5 = /colou?r/g;
+        console.log(target2.match(regExp5));
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'A AA B BB Aa Bb';
+
+        const regExp = /A|B/g;
+        console.log(target.match(regExp));
+
+        const regExp2 = /A+|B+/g;
+        console.log(target.match(regExp2));
+
+        const regExp3 = /[AB]+/g;
+        console.log(target.match(regExp3));
+
+        const target2 = 'A AA BB ZZ Aa Bb';
+        const regExp4 = /[A-Z]+/g;
+        console.log(target2.match(regExp4));
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'AA BB Aa Bb 12';
+        const regExp = /[A-Za-z]+/g; // A~Z 또는 a~z 가 한 번 이상 반복되는 문자열
+        console.log(target.match(regExp));
+
+        const target2 = 'AA BB 12,345';
+        const regExp2 = /[0-9]+/g; // 0~9가 한 번 이상 반복되는 문자열
+        console.log(target2.match(regExp2));
+
+        const regExp3 = /[0-9,]+/g;
+        console.log(target2.match(regExp3)); // 0~9또는 , 가 한 번 이상 반복되는 문자열
+
+        let regExp4 = /[\d,]+/g; //regExp3와 같은 정규표현식
+        console.log(target2.match(regExp4)); // 0~9또는 ,가 한 번 이상 반복되는 문자열
+
+        regExp4 = /[\D,]+/g; // 0~9가 아닌 문자또는 ,가 한 번 이상 반복되는 문자열
+        console.log(target2.match(regExp4))
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'Aa Bb 12,345 _$%&';
+        let regExp = /[\w,]+/g; // 알파벳,숫자,언더스코어,','가 한 번 이상 반복되는 문자열
+        console.log(target.match(regExp));
+
+        regExp = /[\W,]+/g; // 알파벳,숫자,언더스코어가 아닌 문자 또는 ','가 한 번 이상 반복되는 문자열
+        console.log(target.match(regExp));
+    </script> -->
+
+
+    <!-- <script>
+        const target = 'AA BB 12 Aa Bb';
+        const regExp = /[^0-9]+/g;
+        console.log(target.match(regExp));
+
+        const target2 = 'https://naver.com';
+        const regExp2 = /^https/;
+        console.log(regExp2.test(target2));
+
+        const target3 = 'https://naver.com';
+        const regExp3 = /com$/;
+        console.log(regExp3.test(target3));
+    </script> -->
+
+
+    <!-- <script>
+        const url = 'https://example.com';
+        console.log(/^https?:\/\//.test(url)); // http:// 또는 https:// 로 시작하는지
+        console.log(/^(http|https):\/\//.test(url)); // 동일 표현
+
+        const fileName = 'index.html';
+        console.log(/html$/.test(fileName)); // html로 끝나는지 검사
+
+        const target = '12345';
+        console.log(/^\d+$/.test(target)); // 숫자로만 이루어진 문자열인지 검사
+
+        // \s는 공백문자(스페이스,탭,엔터 등등)
+        const target2 = 'Hi!';
+        console.log(/^[\s]+/.test(target2)); // 하나 이상의 공백으로 시작하는지 검사
+    </script> -->
+
+
+    <!-- <script>
+        const id = 'abc123';
+        console.log(/^[A-Za-z0-9]{4,10}$/.test(id)); //알파벳 대소문자 또는 숫자로 시작하며 4~10자리인지 검사
+
+        const email = 'conan@gmail.com';
+        console.log(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email));
+
+        const target = 'abc#123';
+        console.log((/[^A-Za-z0-9]/gi).test(target)); //특수문자 포함여부 검사
+
+        console.log(target.replace(/[^A-Za-z0-9]/gi,'')); //특수문자 제거
+    </script> -->
+
+
+    <!-- <script>
+        const strObj = new String();
+        console.log(strObj);
+
+        const strObj2 = new String('Conan');
+        console.log(strObj2);
+
+        strObj2[0] = 'S'; // 문자열은 원시값이므로 변경 불가 -> 에러발생하지않음음
+        console.log(strObj2);
+    </script> -->
+
+
+    <!-- <script>
+        let strObj = new String(123);
+        console.log(strObj);
+        strObj = new String(null);
+        console.log(strObj);
+
+        // String 생성자 new 없이 사용
+        console.log(String(1));
+        console.log(String(NaN));
+        console.log(String(Infinity));
+
+        console.log(String(true));
+        console.log(String(false));
+    </script> -->
+
+
+    <!-- <script>
+        const str = 'Hello World';
+        console.log(str.indexOf('i')); //-1
+        console.log(str.indexOf('or')); //7
+        console.log(str.indexOf('x')); //-1
+        console.log(str.indexOf('l',3)); //3
+
+        console.log(str.search(/o/)); //4
+        console.log(str.search(/x/)); //-1
+
+        console.log(str.includes('Hello')); //true
+        console.log(str.includes('')); //true
+        console.log(str.includes('x')); //false
+        console.log(str.includes()); //false
+    </script> -->
+
+
+    <!-- <script>
+        const str = 'Hello World';
+        console.log(str.startsWith('He')); //true
+        console.log(str.startsWith('x')); //false
+
+        console.log(str.substring(1,4)); //ell
+
+        const abc = 'abc';
+        console.log(abc.repeat()); //''
+        console.log(abc.repeat(0)); //''
+        console.log(abc.repeat(1)); //abc
+        console.log(abc.repeat(2)); //abcabc
+        console.log(abc.repeat(2.5)); //abcabc (2.5 -> 2)
+        // console.log(abc.repeat(-1)); //RangeError
+    </script> -->
+
+
+    <script>
+        const str = 'Hello world';
+        console.log(str.replace('world', 'Conan')); //->'Hello Conan'
+
+        const str2 = 'Hello world world';
+        console.log(str2.replace('world', 'Conan')); //->'Hello Conan world'
+
+        const str3 = 'Hello world';
+        console.log(str3.replace('world', '<strong>$&</strong>')); //Hello <strong>world</strong>
+
+        const str4 = 'Hello Hello';
+        console.log(str4.replace(/hello/gi,'Conan')); //Conan Conan
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- node.js는 CommonJS 모듈 시스템 채택
+    Browser는 ECMA Script 6 (ESM6) 모듈 시스템 채택 : 기본적으로 strict mode 사용
+    파일별로 독립적인 파일 스코프를 가짐
+    <script src="foo.js"></script>
+    <script src="bar.js"></script>
+    2개의 js파일은 하나의 파일내에 있는것처럼 동작
+    bar.js 파일에서 var x = 'bar' 주석처리 -> bar.js의 console.log(window.x) -> foo출력 -->
+
+    <script type="module" src="foo.mjs"></script>
+    <script type="module" src="bar.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    p.227 fmt 함수 작성
+    주문합계 : 45,000원
+    세액합계 :  4,500원
+    <script>
+        const total = {price: 45000, vat: 4500};
+
+        function fmt(strings, ...values) {
+            let result = '';
+
+            strings.forEach((str, i) => {
+                const val = values[i];
+                //값이 숫자일 경우 천 단위 콤마 + '원'
+                const formatted = (typeof val === 'number')
+                ? val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                : val;
+
+                // //문자열(라벨) 끝 부분 최대 10글자를 찾아 12칸 왼쪽 정렬
+                // const paddedLabel = str.replace(/(.{1,10})$/, m => m.padEnd(12, ' '));
+
+                // //값은 10칸 오른쪽 정렬
+                // const paddedValue = formatted.toString().padStart(10, ' ');
+
+                result += str + (formatted || '');
+            });
+            return result;
+        }
+
+        console.log(fmt`주문합계: ${total.price}원`);
+        console.log(fmt`세액합계: ${total.vat}원`);
+
+    </script>
+
+    p.228 
+    1) 문자열이 한글 자음으로 끝나는지 체크하는 함수
+    2) 조사 '이/가, 을/를, 은/는'를 알아서 붙이는 함수 작성
+    <script>
+        function isEndJaum(str) {
+            //한글은 유니코드 0xAC00 ~ oxD7A3 범위 내에 있음
+            const lastChar = str.charAt(str.length - 1);
+
+            //한글 음절이 아니라면 false
+            if (!/[가-힣]/.test(lastChar)) {
+                return false;
+            }
+            //유니코드로 한글을 분해한 후 종성 확인
+            const unicode = lastChar.charCodeAt(0) - 0xAC00;
+            const jongseong = unicode % 28; //28은 종성의 개수
+
+            return jongseong !== 0; //종성이 0이면 자음으로 끝나지 않음
+        } 
+        console.log(isEndJaum('강원도')); //false
+        console.log(isEndJaum('바라당')); //true
+        console.log(isEndJaum('ㅜㅜ')); //false
+        console.log(isEndJaum('케잌')); //true
+        console.log(isEndJaum('점수 A')); //false cf. isEndJaum('알파벳L') 은 true
+        console.log(isEndJaum('알파벳L'));
+        console.log(isEndJaum('24')); // false cf. isEndJaum('23')은 true 136780
+        console.log(isEndJaum('23'));
+
+        function iga(str) {
+            return isEndJaum(str) ? '이' : '가';
+        }
+
+        function eunun(str) {
+            return isEndJaum(str) ? '은' : '는';
+        }
+
+        function eulul(str) {
+            return isEndJaum(str) ? '을' : '를';
+        }
+
+        console.log(`고성군${iga('고성군')}`); //고성군이 cf. `강원도${iga('강원도')}` => 강원도가
+        console.log(`강원도${iga('강원도')}`);
+        console.log(`고성군${eunun('고성군')}`); //고성군을 cf. `강원도${eunun('강원도')}` => 강원도는
+        console.log(`강원도${eunun('강원도')}`);
+        console.log(`고성군${eulul('고성군')}`); //고성군을 cf. `강원도${eulul('강원도')}` => 강원도를
+        console.log(`강원도${eulul('강원도')}`);
+    </script>
+    
+    p.229
+    초성 검색을 하는 search함수를 정규식을 이용해 작성
+    <script>
+        s = ['강원도 고성군', '고성군 토성면', '토성면 북면', '북면', '김1수']
+
+        console.log(searchByKoreanInitialSounds(s, 'ㄱㅅㄱ'));
+        console.log(searchByKoreanInitialSounds(s, 'ㅌㅅㅁ'));
+        console.log(searchByKoreanInitialSounds(s, 'ㅂㅁ'));
+        console.log(searchByKoreanInitialSounds(s, 'ㅍㅁ'));
+        console.log(searchByKoreanInitialSounds(s, 'ㄱ1ㅅ'));
+    </script>
+
+    p.230
+    1) 문자열 str에서 대문자만 골라 소문자로 변환하세요
+    2) 전화번호를 정확한 형식으로 출력하는 함수를 작성
+    <script>
+        console.log(upperToLower('Senior Coding Learing JS'));
+        // => '*s*-enior *c*-oding *l*-earing *j*-*s*-'
+
+        console.log(telfmt('0101234567')); //'010-123-4567'
+        console.log(telfmt('01012345678')); //'010-1234-5678'
+        console.log(telfmt('0212345678')); //'02-12324-5678'
+        console.log(telfmt('021234567')); //'02-123-4567'
+        console.log(telfmt('0331234567')); //'033-123-4567'
+        console.log(telfmt('15771577')); //'1577-1577'
+        console.log(telfmt('07012341234')); //'070-1234-1234'
+    </script>
+</body>
+</html>
