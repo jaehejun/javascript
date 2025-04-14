@@ -1,0 +1,157 @@
+// 연습문제 227번
+
+const total = { price: 45000, vat: 4500 };
+
+function fmt(strings, ...values) {
+    return strings.reduce((acc, str, i) => acc + str + (values[i] ?? ''), '');
+}
+
+console.log(fmt`주문합계 : ${total.price}`);
+console.log(fmt`세액합계 : ${total.vat}`);
+2:13
+// 연습문제 228
+function isEndJaum(str) {
+    const lastChar = str[str.length - 1];
+    const code = lastChar.charCodeAt(0);
+    const koreanOffset = code - 0xac00;
+
+    // 한글 (가 ~ 힣)
+    if (koreanOffset >= 0 && koreanOffset <= 11171) {
+        const jong = koreanOffset % 28;
+        const result = jong !== 0;
+        console.log(result);
+        return result;
+    }
+
+    // 숫자
+    if (/\d/.test(lastChar)) {
+        const num = Number(lastChar);
+        const result = num % 2 !== 0;
+        console.log(result);
+        return result;
+    }
+
+    // 알파벳
+    if (/[a-zA-Z]/.test(lastChar)) {
+        const vowel = ['a', 'e', 'i', 'o', 'u'];
+        const result = !vowel.includes(lastChar.toLowerCase());
+        console.log(result);
+        return result;
+    }
+
+    // 기타 문자
+    console.log(false);
+    return false;
+}
+
+
+isEndJaum('강원도');
+isEndJaum('바라당');
+isEndJaum('ㅜㅜ');
+isEndJaum('케잌');
+isEndJaum('점수 A');
+isEndJaum('알파벳 L');
+isEndJaum('24');
+isEndJaum('23');
+
+function iga(str) {
+    // 조사 '이/가' 중 알맞은 조사를 붙여 넣음
+    if (isEndJaum(str) === true) {
+        return str + '이';
+    } else {
+        return str + '가';
+    }
+}
+
+function eunun(str) {
+    // 조사 '은/는' 중 알맞은 조사를 붙여 넣음
+    if (isEndJaum(str) === true) {
+        return str + '은';
+    } else {
+        return str + '는';
+    }
+}
+
+function eulul(str) {
+    // 조사 '을/를' 중 알맞은 조사를 붙여 넣음
+    if (isEndJaum(str) === true) {
+        return str + '을';
+    } else {
+        return str + '를';
+    }
+}
+
+console.log(`${iga('고성군')}`);
+console.log(`${eunun('강원도')}`);
+2:14
+const S = ['강원도 고성군', '고성군 토성면', '토성면 북면', '북면', '김1수'];
+const CHO = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+
+function makeInitialSoundPattern(keyword) {
+    let pattern = '';
+
+    for (let ch of keyword) {
+        const index = CHO.indexOf(ch);
+        if (index !== -1) {
+            // 한글 초성 -> 유니코드 범위: 44032 + (초성 * 588) ~ 44032 + (초성 * 588 + 587)
+            const begin = 44032 + index * 588;
+            const end = begin + 587;
+            pattern += `[\\u${begin.toString(16)}-\\u${end.toString(16)}]`;
+        } else {
+            // 초성이 아니면 일반 문자로 처리
+            pattern += ch;
+        }
+    }
+
+    return pattern;
+}
+
+function searchByKoreanInitialSound(list, keyword) {
+    const regexStr = makeInitialSoundPattern(keyword);
+    const regex = new RegExp(regexStr);
+    return list.filter(str => regex.test(str));
+}
+
+console.log(searchByKoreanInitialSound(S, 'ㄱㅅㄱ'));
+console.log(searchByKoreanInitialSound(S, 'ㅌㅅㅁ'));
+console.log(searchByKoreanInitialSound(S, 'ㅂㅁ'));
+2:14
+// 입력받은 문자열에서 대문자만 소문자로 변환
+function upperToLower(string) {
+    let result = '';
+    for (let ch of string) {
+        result += ch >= 'A' && ch <= 'Z' ? ch.toLowerCase() : ch;
+    }
+    return result;
+}
+
+console.log(upperToLower('Senior Coding Learning JS'));
+
+// 전화번호의 올바른 출력 형식으로
+function tellfmt(str) {
+    // 1577-1577 형태 (지역번호 없음, 8자리)
+    if (/^\d{4}\d{4}$/.test(str)) {
+        return str.replace(/(\d{4})(\d{4})/, '$1-$2');
+    }
+
+    // 02-1234-5678 (지역번호 2자리)
+    if (/^\d{10}$/.test(str)) {
+        return str.replace(/(\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+
+    // 그 외 일반 전화번호 (010-1234-5678 등)
+    if (/^\d{10,11}$/.test(str)) {
+        return str.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+
+    return '잘못된 형식';
+}
+
+console.log(tellfmt('01023451234'));
+// 출력 : 010-2345-1234
+
+console.log(tellfmt('0212343456'));
+// 출력 : 02-1234-3456
+
+console.log(tellfmt('15771577'));
+// 출력 : 1577-1577

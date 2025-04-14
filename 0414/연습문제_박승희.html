@@ -1,0 +1,48 @@
+//Question 1
+const total = {price:45000, vat:4500};
+const fmt = (str, ...args) => {
+    return str.reduce((acc, curr, i) => {
+        return acc + curr + (args[i] ? args[i].toLocaleString() : '');
+    }, '');
+}
+console.log(fmt`주문합계: ${total.price}원`);
+console.log(fmt`세액합계: ${total.vat}원`);
+//Question 2
+const isEndJaeum = (str) => {
+    const koreanConsonantRegex = /[ㄱ-ㅎ]$/;
+    return koreanConsonantRegex.test(str);
+};
+//Question 2-2
+const iga = (word) => {
+    const hasBatchim = /[가-힣]([^ㄱ-ㅎㅏ-ㅣ])$/; // 받침 있는 한글 확인
+    return hasBatchim.test(word) ? `${word}이` : `${word}가`;
+};
+const eunun = (word) => {
+    const hasBatchim = /[가-힣]([^ㄱ-ㅎㅏ-ㅣ])$/; // 받침 있는 한글 확인
+    return hasBatchim.test(word) ? `${word}은` : `${word}는`;
+};
+const eulul = (word) => {
+    const hasBatchim = /[가-힣]([^ㄱ-ㅎㅏ-ㅣ])$/; // 받침 있는 한글 확인
+    return hasBatchim.test(word) ? `${word}을` : `${word}를`;
+};
+console.log(iga('고성군'));
+console.log(eunun('고성군'));
+//Question 3
+const searchByKoreanInitialSound = (list, initial) => {
+    const initialRegex = new RegExp(`[ㄱ-ㅎㅏ-ㅣ가-힣]*${initial}[ㄱ-ㅎㅏ-ㅣ가-힣]*`, 'g');
+    return list.filter((item) => initialRegex.test(item));
+};
+const s = ['강원도 고성군', '고성군 토성면'];
+console.log(searchByKoreanInitialSound(s, 'ㄱ'));
+console.log(searchByKoreanInitialSound(s, 'ㅌ'));
+//Question 4
+const upperToLower = (str) => {
+    const upperCaseRegex = /[A-Z]/g;
+    return str.replace(upperCaseRegex, (match) => match.toLowerCase());
+};
+console.log(upperToLower('Hello WORLD!'));
+//Question 4-2
+const telfmt = (phoneNumber) => {
+    const phoneRegex = /(\d{3})(\d{4})(\d{4})/;
+    return phoneNumber.replace(phoneRegex, '$1-$2-$3');
+};
