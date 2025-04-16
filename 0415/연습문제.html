@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    p.281
+    테스트를 위한 임의의 시간(1초 미만)에 resolve를 실행하는 randTime 함수작성
+    <script>
+        // const randTime = val =>
+        //     new Promise((resolve, reject) => {...});
+
+        var randTime = val =>
+            new Promise((resolve,_) => {
+                const delay = Math.floor(Math.random() * 1000); //0~999ms
+                setTimeout(() => {
+                    resolve(`${val} (${delay}ms)`);
+                }, delay);
+        });
+
+        randTime(100).then(console.log);
+        [1,2,3,4,5].forEach(a => randTime(a).then(console.log));
+    </script>
+
+
+    p.282
+    다음 코드를 Promise를 이용하여 refactoring 하시오.
+    <script>
+        setTimeout(function() {
+            console.log('depth1', new Date());
+            setTimeout(function() {
+                console.log('depth2', new Date());
+                setTimeout(function() {
+                    console.log('depth3', new Date());
+                    throw new Error('Already 3-depth!!');
+                }, 3000);
+            }, 2000);
+        }, 1000);
+
+
+        function depthTimer(depth) {
+            const delays = [1000, 2000, 3000];
+
+            return new Promise((resolve, reject) => {
+                const now = new Date();
+                console.log(`depth${depth}`, now);
+
+                if (depth >= 3) {
+                    reject(new Error('Already 3-depth!!'));
+                } else {
+                    setTimeout(() => resolve(depth + 1), delays[depth - 1]);
+                }
+            });
+        }
+
+        console.log('START!', new Date());
+        depthTimer(1).then(depthTimer).then(depthTimer).catch(console.error);
+    </script>
+
+
+    <!-- p.283 // assert() 있어서 넘김
+    다음 코드에서 promiseAll 함수를 직접 작성하시오
+    const randTime = ...
+    <script>
+        const randTime = a;
+
+        promiseAll([randTime(1), randTime(2), randTime(3)]).then(arr => {
+            console.table(arr);
+            assert.deepStrictEqual(arr, vals);
+        }).catch(console.error);
+
+        promiseAll([randTime(11), Promise.reject('RRR'), randTime(33)])
+            .then(array => {
+                console.log('여긴 과연 호출될까?!');
+            })
+            .catch(error => {
+                console.log('reject!!!!!!>>', error);
+            });
+    </script>
+
+
+    p.284
+    다음 코드에서 promiseAllSettled 함수를 직접 작성하시오.
+    const randTime = ...
+    <scirpt>
+        promisAllSettled([randTime(11), Promise.reject('RRR'), randTime(33)])
+            .then(array => {
+                console.table(array);
+                //console.log(JSON.strigify(array, null, ' '));
+                console.log('여긴 과연 호출될까!?');
+                assert.deepStrictEqual(array, allSettledResults);
+            })
+            .catch(error => {
+                console.log('reject!!!!!!>>', error);
+            });
+    </scirpt> -->
+</body>
+</html>

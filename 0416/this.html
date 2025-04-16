@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        var circle = {
+            radius:1,
+            area:function(){
+                //메소드가 자신이 속한 객체의 프로퍼티나 다른 메소드를 참조 하려면
+                //자신이 속한 객체인 circle을 참조할 수 있어야 함
+                //재귀적으로 참조
+                return Math.PI*this.radius*this.radius;
+            }
+        }
+        console.log(circle.area());
+
+        function Circle(radius) {
+            this.radius = radius;
+        }
+        Circle.prototype.area = function() {
+            return Math.PI*this.radius*this.radius;
+        };
+        //생성자 함수로 인스턴스를 생성하려면 생성자 함수를 정의해야 함
+        var c1 = new Circle(2.0);
+        console.log("넓이 = ",c1.area());
+    </script> -->
+
+
+
+    <!-- <script src="./this.js">
+    </script> -->
+
+
+
+    <!-- <script>
+        //var 키워드로 선언한 전역 변수 value는 전역 객체의 프로퍼티
+        // var value = 1;
+        //const 키워드로 선언한 전역 변수 value는 전역 객체의 프로퍼티 아님
+        const value = 1; // bar의 this.value -> undefined
+
+        const obj = {
+            value:100,
+            foo() {
+                console.log("foo's this: ", this); //{value:100, foo:f}
+                console.log("foo's this.value: ", this.value); //100
+
+                //메소드 내에서 정의한 중첩 함수
+                function bar() {
+                    console.log("bar's this: ", this); //window
+                    console.log("bar's this.value: ", this.value); //1
+                }
+                //메서드 내에서 정의한 중첩 함수도 일반 함수로 호출되면
+                //중첩 함수 내부의 this에는 전역 객체가 바인딩
+                bar();
+            }
+        };
+        obj.foo();
+    </script> -->
+
+
+
+    <!-- <script>
+        var value = 1;
+
+        const obj = {
+            value:100,
+            foo() {
+                console.log("foo's this: ", this); //{value:100, foo:f}
+                //콜백 함수 내부의 this에는 전역 객체가 바인딩
+                setTimeout(function() {
+                    console.log("callback's this: ", this); //window
+                    console.log("callback's this.value: ", this.value); //1
+                }, 100);
+            }
+        };
+        obj.foo();
+    </script> -->
+
+
+
+    <!-- <script>
+        var value = 1;
+
+        const obj = {
+            value:100,
+            foo() {
+                //this 바인딩(obj)을 변수 that에 할당
+                const that = this;
+
+                //콜백 함수 내부에서 this 대신 that을 참조
+                setTimeout(function () {
+                    console.log(that.value); //100
+                }, 100);
+            }
+        };
+        obj.foo();
+
+        var value2 = 2;
+
+        const obj2 = {
+            value:200,
+            foo() {
+                //콜백 함수에 명시적으로 this를 바인딩
+                setTimeout(function () {
+                    console.log(this.value); //100
+                }.bind(this), 100);
+            }
+        };
+        obj2.foo();
+
+        var value3 = 3;
+
+        const obj3 = {
+            value:300,
+            foo() {
+                //화살표 함수 내부의 this는 상위 스코프의 this를 가리킴
+                setTimeout(() => console.log(this.value),100); //100
+            }
+        };
+        obj3.foo();
+    </script> -->
+
+
+
+    <!-- <script>
+        const person = {
+            name:'코난',
+            getName() {
+                //메소드 내부의 this는 메서드를 호출한 객체에 바인딩
+                return this.name;
+            }
+        };
+        //메소드 getName을 호출한 객체는 person
+        console.log('person', person.getName()); //코난
+
+        const anotherPerson = {
+            name:'장미'
+        };
+        //getName 메서드를 anotherPerson 객체의 메서드로 할당
+        anotherPerson.getName = person.getName;
+        console.log(anotherPerson.hasOwnProperty());
+
+        //getName 메서드를 호출한 객체는 anotherPerson
+        console.log('another person', anotherPerson.getName()); //장미
+
+        //getName 메서드를 변수에 할당
+        const getName = person.getName;
+
+        //getName 메서드를 일반 함수로 호출
+        console.log('guess who?', getName()); // ''
+        //일반 함수로 호출된 getName함수 내부의 this.name은 브라우저 환경에서 window.name이며
+        //브라우저 창의 이름을 나타내는 빌트인 프로퍼티이며 기본값은 ''
+        //Node.js 환경에서 this.name은 undefined
+    </script> -->
+
+
+
+    <!-- <script>
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.getName = function () {
+            return this.name;
+        };
+
+        const me = new Person('코난');
+
+        //getName 메서드를 호출한 객체는 me
+        console.log(me.getName()); // 코난
+
+        Person.prototype.name = '장미';
+
+        //getName 메서드를 호출한 객체는 Person.prototype
+        console.log(Person.prototype.getName()); //장미
+    </script> -->
+
+
+
+    <!-- <script>
+        function Circle(radius) {
+            this.radius = radius;
+            this.getArea = function() {
+                return Math.PI*this.radius*this.radius;
+            };
+        };
+
+        const c1 = new Circle(1);
+        const c2 = new Circle(2);
+        console.log(c1.getArea());
+        console.log(c2.getArea());
+
+        //new 연산자와 함께 호출하지 않으면 일반 함수의 호출
+        const c3 = Circle(15);
+        //일반 함수로 호출된 Circle에는 반환문 없으므로 암묵적으로 undefined반환
+        console.log(c3); //undefined
+        //일반 함수로 호출된 Circle 내부의 this는 전역객체 가리킴
+        console.log('radius',radius); //15
+    </script> -->
+
+
+
+    <!-- <script>
+        function getThisBinding() {
+            console.log(arguments);
+            return this;
+        }
+
+        //this로 사용할 객체
+        const thisArg = {a:1};
+
+        console.log(getThisBinding()); //window
+        
+        //getThisBinding 함수를 호출하면서 인수로 전달한 객체를 getThisBinding함수의 this에 바인딩
+        //apply: 호출할 함수의 인수를 배열로 전달
+        console.log(getThisBinding.apply(thisArg,[1,2,3])); //{a:1}
+        //call: 호출할 함수의 인수를 ','로 구분하여 전달
+        console.log(getThisBinding.call(thisArg,1,2,3)); //{a:1}
+    </script> -->
+
+
+
+    <!-- <script>
+        function convertArgsToArray() {
+            console.log(arguments);
+            //arguments 객체를 배열로 반환
+            //Array.prototype.slice를 인수없이 호출하면 배열의 복사본을 생성
+            const arr = Array.prototype.slice.call(arguments);
+            //const arr = Array.prototype.slice.apply(arguments);
+            console.log(arr);
+            return arr;
+        }
+        convertArgsToArray(1,2,3); //[1,2,3]
+    </script> -->
+
+
+
+    <script>
+        function getThisBinding() {
+            return this;
+        }
+
+        //this로 사용할 객체
+        const thisArg = {a:1};
+
+        //bind:첫 번째 인수로 전달한 thisArg로 this바인딩이 교체된
+        //getThisBinding 함수를 새롭게 생성해 반환
+        console.log(getThisBinding.bind(thisArg)); //getThisBinding
+        //bind는 함수를 호출하지는 않으므로 명시적으로 호출
+        console.log(getThisBinding.bind(thisArg)()); //{a:1}
+    </script>
+</body>
+</html>

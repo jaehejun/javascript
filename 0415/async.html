@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // async 함수는 항상 Promise 반환
+        // await Promise 객체의 실행이 완료되기를 기다림림
+
+
+        // async function myName() {
+        //     return "Conan";
+        // }
+
+        // console.log(myName()); //Promise {'Conan'}
+
+
+        // async function myName() {
+        //     return "Conan"; //return Promise.resolve("Conan")과 동일
+        // }
+        // async function showName() {
+        //     const name = await myName(); //Promise가 resolve될 때까지 기다림
+        //     console.log(name); //Conan 출력
+        // }
+
+        // console.log(showName());
+        // //Promise {<pending>} async 함수는 실행되자마자 Promise 객체 즉시 반환
+        // //Promise는 내부 await들이 비동기적으로 처리된 이후에 resolve 됨
+        // //Conan
+
+
+        //Promise 객체를 직접 생성하는 경우 async 없어도 동작
+        function waitOneSec(msg) {
+            return new Promise((resolve, _) => {
+                setTimeout(() => resolve(`${msg}`), 1000);
+            });
+        }
+
+        async function countOne2Ten() {
+            for (let x of [...Array(10).keys()]) {
+                let result = await waitOneSec(`${x+1}초 대기중..`);
+                console.log(result);
+            }
+            console.log("완료");
+        }
+
+        countOne2Ten();
+    </script>
+</body>
+</html>

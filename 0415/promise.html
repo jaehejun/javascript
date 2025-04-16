@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //fulfilled된 프로미스
+        // const fulfilled = new Promise(resolve => resolve(1));
+
+        // //rejected된 프로미스
+        // const rejected = new Promise((_, reject) => reject(new Error('error occurred')));
+
+
+        //후속처리
+        //fulfilled
+        // new Promise(resolve => resolve('fulfilled'))
+        // .then(v => console.log(v),e => console.error(e));//fulfilled
+
+        // //rejected
+        // new Promise((_,reject) => reject(new Error('rejected')))
+        // .then(v => console.log(v), e => console.error(e)); //Error:rejected
+
+
+        // var promise = new Promise(function(resolve, reject) {
+        //     setTimeout(function () {
+        //         var name = prompt("이름을 입력하십시오");
+        //         resolve(name);
+        //     }, 1000);
+        // });
+        // promise.then(function(name) {
+        //     console.log("내이름은" + name + "!!!");
+        // });
+
+
+        //reject, catch
+        // var promise = new Promise(function (resolve, reject) {
+        //     setTimeout(function () {
+        //         var n = parseInt(prompt("10 미만의 숫자를 입력하십시오"));
+        //         if (n <= 10) {
+        //             resolve(n);
+        //         } else {
+        //             reject(`오류: ${n}은 10 이상입니다`);
+        //         }
+        //     }, 1000);
+        // });
+        // promise
+        //     .then(function(num) {
+        //         console.log(`2^${num} = ${Math.pow(2,num)}`);
+        // })
+        //     .catch(function(error) {
+        //     console.log(error);
+        // });
+
+
+        // then()에서 처리할 내용과 catch()에서 처리할 내용 하나로 작성성
+        // var promise = new Promise(function (resolve, reject) {
+        //     setTimeout(function () {
+        //         var n = parseInt(prompt("10 미만의 숫자를 입력하십시오"));
+        //         if (n <= 10) {
+        //             resolve(n);
+        //         } else {
+        //             reject(`오류: ${n}은 10 이상입니다`);
+        //         }
+        //     }, 1000);
+        // });
+        // promise.then(
+        //     //처리가 성공적으로 끝났을 때 호출되는 콜백함수
+        //     function(num) {
+        //         console.log(`2^${num} = ${Math.pow(2,num)}`);
+        //     },
+        //     //처리가 실패로 끝났을 때 호출되는 콜백함수
+        //     function(error) {
+        //         console.log(error);
+        //     }
+        // );
+
+
+
+        //Promise가 실행하는 콜백 함수에 인수 넘기기
+        // function buyAsync(myMoney) {
+        //     return new Promise(function(resolve, reject) {
+        //         setTimeout(function () {
+        //             var payment = parseInt(prompt("지불하고자 하는 금액을 입력하십시오"));
+        //             var balance = myMoney - payment;
+        //             if (balance > 0) {
+        //                 console.log(`${payment}원을 지불했습니다.`);
+        //             }
+        //         }, 1000);
+        //     });
+        // }
+        
+        // buyAsync(500)
+        //     .then(function(balance) {
+        //         console.log(`잔액은 ${balance}원 입니다.`);
+        //     })
+        //     .catch(function(error) {
+        //         console.log(error);
+        //     });
+
+
+        // 비동기 처리 직렬로 실행하기기
+        // function buyAsync(myMoney) {
+        //     return new Promise(function(resolve,reject) {
+        //         setTimeout(function() {
+        //             var payment = parseInt(prompt("지불하고자하는 금액을 입력하십시오"));
+        //             var balance = myMoney - payment;
+        //             if (balance >= 0) {
+        //                 console.log(`${payment}원을 지불했습니다.`);
+        //                 resolve(balance)
+        //             } else {
+        //                 reject(`잔액은 ${myMoney}원 입니다. 구매할 수 없습니다.`);
+        //             }
+        //         }, 1000);
+        //     });
+        // }
+        
+        // buyAsync(500)
+        //     .then(function(balance) {
+            //         console.log(`잔액은${balance}원 입니다.`);
+            //         return buyAsync(balance);
+            //     })
+            //     .then(function(balance) {
+                //         console.log(`잔액은 ${balance}원 입니다.`);
+                //         return buyAsync(balance);
+                //     })
+                //     .then(function(balance) {
+                    //         console.log(`잔액은 ${balance}원 입니다.`);
+                    //         return buyAsync(balance);
+                    //     })
+                    //     .catch(function(error) {
+                        //         console.log(error);
+                        //     });
+                        
+                        
+                        
+        //비동기 처리를 병렬로 실행하기
+        
+        // function buyAsync(name, myMoney) {
+        //     return new Promise(function(resolve,reject) {
+        //         setTimeout(function() {
+        //             var payment = parseInt(prompt(`${name}님, 지불하고자하는 금액을 입력하십시오`));
+        //             var balance = myMoney - payment;
+        //             if (balance >= 0) {
+        //                 console.log(`${name}: ${payment}원을 지불했습니다.`);
+        //                 resolve(balance)
+        //             } else {
+        //                 reject(`${name}: 잔액은 ${myMoney}원 입니다. 구매할 수 없습니다.`);
+        //             }
+        //         }, 1000);
+        //     });
+        // }
+        
+        // Promise.all([
+        //     buyAsync("코난", 500),
+        //     buyAsync("장미", 600),
+        //     buyAsync("미란", 1000)
+        // ])
+        //     .then(function(balance) {
+        //         console.log(balance);
+        //     })
+        //     .catch(function(error) {
+        //         console.log(error);
+        //     });
+    </script>
+
+
+    //defer async
+    <script src="main.js" defer></script>
+    <p>콘솔을 확인해주세요</p>
+
+
+        
+</body>
+</html>
